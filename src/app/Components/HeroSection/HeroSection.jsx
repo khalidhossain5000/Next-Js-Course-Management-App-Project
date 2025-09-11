@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa6";
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden pt-6">
+    <section className="relative w-full h-screen overflow-hidden lg:pt-6 pt-24">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -17,13 +17,13 @@ const HeroSection = () => {
           priority={true}
         />
         {/* Subtle Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-black/5 to-black/5"></div>
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center lg:justify-between h-full container mx-auto px-3">
         {/* Left Text Content */}
-        <div className="flex-1 text-center lg:text-left space-y-5">
+        <div className="flex-1 text-center lg:text-left space-y-3 lg:space-y-5 ">
           <h5 className="text-[#685F78] font-bold text-lg lg:text-xl capitalize">
             The Leader in Online Learning
           </h5>
@@ -34,7 +34,7 @@ const HeroSection = () => {
             Trusted by over 15K Users <br />
 worldwide since 2022
           </p>
-          <div className="pt- flex items-center">
+          <div className="pt-3 flex items-center justify-center lg:justify-start">
             <h2 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold mr-6 md:mr-9 lg:mr-10">0+</h2>
             <div className="flex items-center">
               <h2 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold mr-3">4.5</h2>
@@ -48,7 +48,7 @@ worldwide since 2022
         </div>
 
         {/* Right Side Image */}
-        <div className="flex-1 hidden lg:block relative w-full h-96 lg:h-[500px]">
+        <div className="flex-1  relative w-full h-96 xl:h-[400px] 2xl:[500px]">
           <Image
             src={bannerImg}
             alt="Hero Side Graphic"

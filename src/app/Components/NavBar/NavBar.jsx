@@ -2,8 +2,15 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import logo from "../../../assets/logo/logo.svg";
-import { FaUser } from "react-icons/fa";
-
+import { FaTimes, FaUser } from "react-icons/fa";
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton,
+} from "@mui/material";
+import { FaBars } from "react-icons/fa";
 import Image from "next/image";
 const NavBar = () => {
   const links = (
@@ -22,6 +29,8 @@ const NavBar = () => {
       </li>
     </>
   );
+  const [open, setOpen] = useState(false);
+
   // sticky code statd
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
@@ -41,10 +50,10 @@ const NavBar = () => {
   // sticky code ends
   return (
     <header
-      className={`py-6 fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
+      className={`py-6  fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
         isSticky
           ? "bg-white shadow-md dark:bg-dark-primary/80" // scroll করলে bg আসবে
-          : "bg-transparent" // initial transparent
+          : "bg-transparent " // initial transparent
       }`}
     >
       <nav className="container mx-auto hidden lg:flex items-center justify-between gap-6">
@@ -63,6 +72,41 @@ const NavBar = () => {
             <FaUser />
             Register
           </button>
+        </div>
+      </nav>
+      {/* MOBILE MENU */}
+      <nav className="lg:hidden flex items-center justify-between ">
+        <div className="logo">
+          <Image src={logo} alt="Logo" width={100} />
+        </div>
+        <div>
+          
+            {/* Burger Icon */}
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setOpen(true)}
+              className="lg:hidden"
+            >
+              <FaBars size={24} />
+            </IconButton>
+
+            {/* Drawer */}
+            <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+              <div className="w-64 h-full flex flex-col p-4">
+                {/* Close Icon */}
+                <div className="self-end mb-4">
+                  <IconButton onClick={() => setOpen(false)}>
+                    <FaTimes size={24} />
+                  </IconButton>
+                </div>
+
+                {/* Links */}
+                <ul className="flex flex-col gap-4 text-lg">{links}</ul>
+              </div>
+            </Drawer>
+          
         </div>
       </nav>
     </header>
