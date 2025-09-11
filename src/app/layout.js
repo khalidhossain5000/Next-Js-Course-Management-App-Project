@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import NavBar from "./Components/NavBar/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,6 +22,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.className} antialiased`}
       >
+        
+        <header>
+          <NavBar/>
+        </header>
         {children}
       </body>
     </html>
