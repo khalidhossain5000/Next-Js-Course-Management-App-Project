@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa6";
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden pt-6">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -21,14 +21,14 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center lg:justify-between h-full max-w-7xl mx-auto px-6 lg:px-24">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center lg:justify-between h-full container mx-auto px-3">
         {/* Left Text Content */}
         <div className="flex-1 text-center lg:text-left space-y-5">
           <h5 className="text-[#685F78] font-bold text-lg lg:text-xl capitalize">
             The Leader in Online Learning
           </h5>
           <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold leading-tight" >
-            Engaging & <br /> Accessible  Online Courses For All
+            Engaging &  Accessible  Online Courses For All
           </h1>
           <p className="text-[#685F78] font-semibold lg:max-w-lg text-base md:text-lg">
             Trusted by over 15K Users <br />
