@@ -2,6 +2,8 @@ import React from "react";
 import bgImage from "../../../assets/BgImage/banner.png";
 import Image from "next/image";
 import bannerImg from "../../../assets/HomeImg/object.png";
+import { FaStar } from "react-icons/fa6";
+
 const HeroSection = () => {
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -15,7 +17,7 @@ const HeroSection = () => {
           priority={true}
         />
         {/* Subtle Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/5 to-black/30"></div>
       </div>
 
       {/* Main Content */}
@@ -32,15 +34,21 @@ const HeroSection = () => {
             Trusted by over 15K Users <br />
 worldwide since 2022
           </p>
-          <div className="pt-4">
-            <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition">
-              Get Started Now
-            </button>
+          <div className="pt- flex items-center">
+            <h2 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold mr-6 md:mr-9 lg:mr-10">0+</h2>
+            <div className="flex items-center">
+              <h2 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold mr-3">4.5</h2>
+              <FaStar className="text-amber-500 text-xl"/>
+              <FaStar className="text-amber-500 text-xl"/>
+              <FaStar className="text-amber-500 text-xl"/>
+              <FaStar className="text-amber-500 text-xl"/>
+              <FaStar className="text-amber-500 text-xl"/>
+            </div>
           </div>
         </div>
 
         {/* Right Side Image */}
-        <div className="flex-1 hidden lg:block relative w-full h-96 lg:h-[550px]">
+        <div className="flex-1 hidden lg:block relative w-full h-96 lg:h-[500px]">
           <Image
             src={bannerImg}
             alt="Hero Side Graphic"
