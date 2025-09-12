@@ -12,7 +12,7 @@ const page = () => {
   const [profilePic, setProfilePic] = useState("");
   //   const [passwordError, setPasswordError] = useState("");
   const [previewUrl, setPreviewUrl] = useState(null);
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
   const axiosSecure = useAxiosSecure();
 
   const handleSubmit = async (e) => {
@@ -21,24 +21,23 @@ const page = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const userInfo={
+    const userInfo = {
       name,
       email,
-      userImage:profilePic,
-      password
-    }
-setLoading(true)
+      userImage: profilePic,
+      password,
+    };
+    setLoading(true);
     try {
       const res = await axiosSecure.post("/api/auth/register", userInfo);
-console.log(res)
+      console.log(res);
       if (res.status === 201) {
         toast.success("✅ Registration successful!");
-        setLoading(false)
-        alert('sucess resgiert')
+        setLoading(false);
+        alert("sucess resgiert");
       }
     } catch (error) {
       console.error(error);
-      
     }
   };
 
@@ -197,12 +196,11 @@ console.log(res)
               type="submit"
               className="bg-custom-accent-primary text-white py-[9px] px-4  lg:py-4 items-center rounded-[55px] text-sm font-semibold  w-full text-center"
             >
-              
-               {loading ? (
-                  <ImSpinner9 className="animate-spin m-auto" />
-                ) : (
-                  "CREATE ACCOUNT"
-                )}
+              {loading ? (
+                <ImSpinner9 className="animate-spin m-auto" />
+              ) : (
+                "CREATE ACCOUNT"
+              )}
             </button>
             <p className="pt-3 text-lg text-gray-500 font-bold">
               Already have an account?{" "}

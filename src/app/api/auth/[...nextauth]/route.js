@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import clientPromise from "../../../../lib/mongodb"; 
+import clientPromise from "../../../lib/mongodb.js"; 
 import bcrypt from "bcryptjs"; 
 export const authOptions = {
   providers: [
@@ -28,8 +28,7 @@ export const authOptions = {
 
         if (!user) throw new Error("No user found");
 
-        // Simple password check (bcrypt হলে আলাদা হবে)
-        // const isValid = credentials.password === user.password;
+        
         const isValid = await bcrypt.compare(credentials.password, user.password);
 
         if (!isValid) throw new Error("Incorrect password");

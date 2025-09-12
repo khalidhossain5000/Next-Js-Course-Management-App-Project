@@ -64,10 +64,12 @@ const NavBar = () => {
           <ul className="flex items-center gap-6">{links}</ul>
         </div>
         <div className="auth-buttons flex items-center">
-          <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3">
+          <Link href={'/Auth/Login'}>
+          <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3 cursor-pointer">
             <FaUser />
             Sign In
           </button>
+          </Link>
           <Link href={'/Auth/Register'}>
           <button className="bg-custom-accent-secondary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 cursor-pointer">
             <FaUser />
