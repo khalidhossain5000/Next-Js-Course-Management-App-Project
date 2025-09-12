@@ -68,10 +68,12 @@ const NavBar = () => {
             <FaUser />
             Sign In
           </button>
-          <button className="bg-custom-accent-secondary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2">
+          <Link href={'/Auth/Register'}>
+          <button className="bg-custom-accent-secondary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 cursor-pointer">
             <FaUser />
             Register
           </button>
+          </Link>
         </div>
       </nav>
       {/* MOBILE MENU */}
