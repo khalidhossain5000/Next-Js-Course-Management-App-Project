@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 export async function POST(req) {
   try {
     const client = await clientPromise;
-    const db = client.db("Next-Js-Course"); // change this to your DB name
+    const db = client.db("Next-Js-Course-Management-Project"); // change this to your DB name
 
     const body = await req.json();
     const { name, email, password, profileImage } = body;

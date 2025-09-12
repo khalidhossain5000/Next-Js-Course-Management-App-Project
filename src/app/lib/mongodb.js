@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 //  MongoDB URI environment variable থেকে নাও
 const uri = process.env.mongoDB_uri;
-
+console.log(uri,'from mongo sdhgdsgh');
 let client;
 let clientPromise;
 
