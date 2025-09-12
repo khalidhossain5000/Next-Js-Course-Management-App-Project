@@ -8,6 +8,7 @@ import logo from "../../../assets/logo/logo.jpg";
 import { signIn } from "next-auth/react";
 
 import toast from "react-hot-toast";
+import SocialLogin from "@/app/Components/SocialLogin/SocialLogin";
 const page = () => {
   const [error, setError] = useState("");
 
@@ -130,6 +131,7 @@ console.log(error);
                 "Sign In"
               )}
             </button>
+            <SocialLogin/>
             <p className="pt-3 text-lg text-gray-500 font-bold">
               Don't have an account?{" "}
               <span className="text-custom-accent-secondary">Register</span>

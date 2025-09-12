@@ -8,6 +8,7 @@ import logo from "../../../assets/logo/logo.jpg";
 import axios from "axios";
 import useAxiosSecure from "@/app/Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import SocialLogin from "@/app/Components/SocialLogin/SocialLogin";
 const page = () => {
   const [profilePic, setProfilePic] = useState("");
   //   const [passwordError, setPasswordError] = useState("");
@@ -94,14 +95,14 @@ const page = () => {
 
         {/* Right Side Image */}
 
-        <div className="w-full flex-1 mx-auto h-full p-12 lg:p-16 bg-[#ffffff] p">
+        <div className="w-full flex-1 mx-auto h-full p-12  bg-[#ffffff] p">
           <div className="logoandback flex justify-between">
             <Image src={logo} alt="Logo" width={200} />
             <div className="back">
               <h2>Back Home</h2>
             </div>
           </div>
-          <h2 className="pt-22 text-2xl font-bold mb-6 text-center lg:text-left">
+          <h2 className="pt-6 text-2xl font-bold mb-6 text-center lg:text-left">
             Register
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -202,10 +203,12 @@ const page = () => {
                 "CREATE ACCOUNT"
               )}
             </button>
+            
             <p className="pt-3 text-lg text-gray-500 font-bold">
               Already have an account?{" "}
               <span className="text-custom-accent-secondary">Login</span>
             </p>
+            <SocialLogin/>
           </form>
         </div>
       </div>
