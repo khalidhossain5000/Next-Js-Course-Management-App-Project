@@ -1,14 +1,47 @@
 "use client";
 import React, { useState } from "react";
+import { ImSpinner9 } from "react-icons/im";
 import authBg from "../../../assets/AuthImg/login-bg.png";
 import authImg from "../../../assets/AuthImg/login-img.png";
 import Image from "next/image";
 import logo from "../../../assets/logo/logo.jpg";
 import axios from "axios";
+import useAxiosSecure from "@/app/Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 const page = () => {
   const [profilePic, setProfilePic] = useState("");
   //   const [passwordError, setPasswordError] = useState("");
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [loading,setLoading]=useState(false)
+  const axiosSecure = useAxiosSecure();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const userInfo={
+      name,
+      email,
+      userImage:profilePic,
+      password
+    }
+setLoading(true)
+    try {
+      const res = await axiosSecure.post("/api/auth/register", userInfo);
+console.log(res)
+      if (res.status === 201) {
+        toast.success("✅ Registration successful!");
+        setLoading(false)
+        alert('sucess resgiert')
+      }
+    } catch (error) {
+      console.error(error);
+      
+    }
+  };
+
   const handleImageUpload = async (e) => {
     const image = e.target.files[0];
     if (image) {
@@ -17,17 +50,13 @@ const page = () => {
     const formData = new FormData();
     formData.append("image", image);
 
-    const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${
-      process.env.NEXT_PUBLIC_IMGBB_KEY
-    }`;
-    console.log("this is key",imagUploadUrl);
+    const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_KEY}`;
+
     const res = await axios.post(imagUploadUrl, formData);
 
     setProfilePic(res.data.data.url);
   };
-  
 
-  console.log('thi sis s',profilePic);
   return (
     <section className="relative w-full h-screen overflow-hidden ">
       {/* Background Image */}
@@ -76,7 +105,7 @@ const page = () => {
           <h2 className="pt-22 text-2xl font-bold mb-6 text-center lg:text-left">
             Register
           </h2>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name */}
             <div>
               <label
@@ -97,23 +126,23 @@ const page = () => {
             <div>
               <div>
                 {previewUrl ? (
-              <div
-                className="w-full rounded-lg border p-2 flex items-center gap-3"
-                style={{
-                  background: "var(--color-light-secondary)",
-                  borderColor: "rgba(0,0,0,0.12)",
-                }}
-              >
-                <img
-                  src={previewUrl}
-                  alt="Selected preview"
-                  className="w-16 h-16 object-cover rounded-lg"
-                />
-                <span className="text-xs opacity-80">
-                  Preview of your selected image
-                </span>
-              </div>
-            ) : null}
+                  <div
+                    className="w-full rounded-lg border p-2 flex items-center gap-3"
+                    style={{
+                      background: "var(--color-light-secondary)",
+                      borderColor: "rgba(0,0,0,0.12)",
+                    }}
+                  >
+                    <img
+                      src={previewUrl}
+                      alt="Selected preview"
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                    <span className="text-xs opacity-80">
+                      Preview of your selected image
+                    </span>
+                  </div>
+                ) : null}
               </div>
               <label
                 className="text-[#685f78] block mb-1 font-medium"
@@ -168,9 +197,17 @@ const page = () => {
               type="submit"
               className="bg-custom-accent-primary text-white py-[9px] px-4  lg:py-4 items-center rounded-[55px] text-sm font-semibold  w-full text-center"
             >
-              CREATE ACCOUNT
+              
+               {loading ? (
+                  <ImSpinner9 className="animate-spin m-auto" />
+                ) : (
+                  "CREATE ACCOUNT"
+                )}
             </button>
-            <p className="pt-3 text-lg text-gray-500 font-bold">Already have an account? <span className="text-custom-accent-secondary">Login</span></p>
+            <p className="pt-3 text-lg text-gray-500 font-bold">
+              Already have an account?{" "}
+              <span className="text-custom-accent-secondary">Login</span>
+            </p>
           </form>
         </div>
       </div>
