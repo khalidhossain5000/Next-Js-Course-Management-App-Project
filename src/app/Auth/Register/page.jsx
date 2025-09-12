@@ -4,6 +4,7 @@ import authBg from "../../../assets/AuthImg/login-bg.png";
 import authImg from "../../../assets/AuthImg/login-img.png";
 import Image from "next/image";
 import logo from "../../../assets/logo/logo.jpg";
+import axios from "axios";
 const page = () => {
   const [profilePic, setProfilePic] = useState("");
   //   const [passwordError, setPasswordError] = useState("");
@@ -17,12 +18,16 @@ const page = () => {
     formData.append("image", image);
 
     const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${
-      import.meta.env.VITE_Imgbb_Key
+      process.env.NEXT_PUBLIC_IMGBB_KEY
     }`;
+    console.log("this is key",imagUploadUrl);
     const res = await axios.post(imagUploadUrl, formData);
 
     setProfilePic(res.data.data.url);
   };
+  
+
+  console.log('thi sis s',profilePic);
   return (
     <section className="relative w-full h-screen overflow-hidden ">
       {/* Background Image */}
@@ -90,6 +95,26 @@ const page = () => {
             </div>
             {/* Image Upload */}
             <div>
+              <div>
+                {previewUrl ? (
+              <div
+                className="w-full rounded-lg border p-2 flex items-center gap-3"
+                style={{
+                  background: "var(--color-light-secondary)",
+                  borderColor: "rgba(0,0,0,0.12)",
+                }}
+              >
+                <img
+                  src={previewUrl}
+                  alt="Selected preview"
+                  className="w-16 h-16 object-cover rounded-lg"
+                />
+                <span className="text-xs opacity-80">
+                  Preview of your selected image
+                </span>
+              </div>
+            ) : null}
+              </div>
               <label
                 className="text-[#685f78] block mb-1 font-medium"
                 htmlFor="profileImage"
@@ -98,9 +123,9 @@ const page = () => {
               </label>
               <input
                 type="file"
-                id="profileImage"
-                name="profileImage"
+                name="photo"
                 accept="image/*"
+                onChange={handleImageUpload}
                 className="w-full border border-[#e9ecef] rounded px-3 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
               />
             </div>
