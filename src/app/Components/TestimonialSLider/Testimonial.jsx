@@ -77,10 +77,10 @@ const Testimonial = () => {
           </Swiper>
 
           {/* Navigation Arrows */}
-          <div className="swiper-button-prev absolute top-1/2 left-0 transform -translate-y-1/2 bg-[var(--color-custom-accent-primary)] p-2 rounded-full cursor-pointer z-20 text-white">
+          <div className="swiper-button-prev absolute top-1/2 left-0 transform -translate-y-1/2 bg-white p-2 rounded-sm cursor-pointer z-20 text-custom-text   hover:bg-custom-accent-secondary transition duration-500">
             <HiChevronLeft className="w-6 h-6" />
           </div>
-          <div className="swiper-button-next absolute top-1/2 right-0 transform -translate-y-1/2 bg-[var(--color-custom-accent-primary)] p-2 rounded-full cursor-pointer z-20 text-white">
+          <div className="swiper-button-next absolute top-1/2 right-0 transform -translate-y-1/2 bg-white  p-2 rounded-sm cursor-pointer z-20 text-custom-text hover:bg-custom-accent-secondary transition duration-500">
             <HiChevronRight className="w-6 h-6" />
           </div>
         </div>
