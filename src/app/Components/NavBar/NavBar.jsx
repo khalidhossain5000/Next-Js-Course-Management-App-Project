@@ -3,15 +3,10 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import logo from "../../../assets/logo/logo.svg";
 import { FaTimes, FaUser } from "react-icons/fa";
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  IconButton,
-} from "@mui/material";
+import { Drawer, IconButton } from "@mui/material";
 import { FaBars } from "react-icons/fa";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
 const NavBar = () => {
   const links = (
     <>
@@ -30,7 +25,7 @@ const NavBar = () => {
     </>
   );
   const [open, setOpen] = useState(false);
-
+  const { data: session, status } = useSession();
   // sticky code statd
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
@@ -63,19 +58,34 @@ const NavBar = () => {
         <div className="nav-meus">
           <ul className="flex items-center gap-6">{links}</ul>
         </div>
-        <div className="auth-buttons flex items-center">
-          <Link href={'/Auth/Login'}>
-          <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3 cursor-pointer">
-            <FaUser />
-            Sign In
-          </button>
-          </Link>
-          <Link href={'/Auth/Register'}>
-          <button className="bg-custom-accent-secondary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 cursor-pointer">
-            <FaUser />
-            Register
-          </button>
-          </Link>
+
+        <div>
+          {status === "authenticated" ? (
+            <div className="flex items-center space-x-4">
+              <p>Welcome, {session.user.name || session.user.email}</p>
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="px-3 py-1 bg-red-500 text-white rounded"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="auth-buttons flex items-center">
+              <Link href={"/Auth/Login"}>
+                <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3 cursor-pointer">
+                  <FaUser />
+                  Sign In
+                </button>
+              </Link>
+              <Link href={"/Auth/Register"}>
+                <button className="bg-custom-accent-secondary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 cursor-pointer">
+                  <FaUser />
+                  Register
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
       {/* MOBILE MENU */}
@@ -84,33 +94,31 @@ const NavBar = () => {
           <Image src={logo} alt="Logo" width={100} />
         </div>
         <div>
-          
-            {/* Burger Icon */}
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={() => setOpen(true)}
-              className="lg:hidden"
-            >
-              <FaBars size={24} />
-            </IconButton>
+          {/* Burger Icon */}
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setOpen(true)}
+            className="lg:hidden"
+          >
+            <FaBars size={24} />
+          </IconButton>
 
-            {/* Drawer */}
-            <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
-              <div className="w-64 h-full flex flex-col p-4">
-                {/* Close Icon */}
-                <div className="self-end mb-4">
-                  <IconButton onClick={() => setOpen(false)}>
-                    <FaTimes size={24} />
-                  </IconButton>
-                </div>
-
-                {/* Links */}
-                <ul className="flex flex-col gap-4 text-lg">{links}</ul>
+          {/* Drawer */}
+          <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+            <div className="w-64 h-full flex flex-col p-4">
+              {/* Close Icon */}
+              <div className="self-end mb-4">
+                <IconButton onClick={() => setOpen(false)}>
+                  <FaTimes size={24} />
+                </IconButton>
               </div>
-            </Drawer>
-          
+
+              {/* Links */}
+              <ul className="flex flex-col gap-4 text-lg">{links}</ul>
+            </div>
+          </Drawer>
         </div>
       </nav>
     </header>

@@ -1,6 +1,8 @@
+"use client"
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 
 // Configure Inter
 const inter = Inter({
@@ -12,6 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
+        <SessionProvider>
         {children}
         <Toaster
           position="top-center"
@@ -27,6 +30,7 @@ export default function RootLayout({ children }) {
             },
           }}
         />
+        </SessionProvider>
       </body>
     </html>
   );
