@@ -6,42 +6,84 @@ import authImg from "../../../assets/AuthImg/login-img.png";
 import Image from "next/image";
 import logo from "../../../assets/logo/logo.jpg";
 import axios from "axios";
-import useAxiosSecure from "@/app/Hooks/useAxiosSecure";
+
 import toast from "react-hot-toast";
 import SocialLogin from "@/app/Components/SocialLogin/SocialLogin";
+import { signIn } from "next-auth/react";
+import useAxios from "@/app/Hooks/useAxios";
 const page = () => {
   const [profilePic, setProfilePic] = useState("");
   //   const [passwordError, setPasswordError] = useState("");
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
-  const axiosSecure = useAxiosSecure();
+ const axiosInstance=useAxios()
+
+
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const userInfo = {
-      name,
-      email,
-      userImage: profilePic,
-      password,
-    };
-    setLoading(true);
-    try {
-      const res = await axiosSecure.post("/api/auth/register", userInfo);
-      console.log(res);
-      if (res.status === 201) {
-        toast.success("✅ Registration successful!");
-        setLoading(false);
-        alert("sucess resgiert");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  e.preventDefault();
+    if (!profilePic) {
+    toast.error("Please wait, image is uploading!");
+    return;
+  }
+  const form = e.target;
+
+  // 1️⃣Get form values
+  const name = form.name.value;
+  const email = form.email.value;
+  const password = form.password.value;
+
+  // 2️⃣ Prepare user info for register API
+  const userInfo = {
+    name,
+    email,
+    password,
+    profileImage: profilePic, // profile pic যদি থাকে
   };
 
+  setLoading(true); // 3️⃣ Loading start
+
+  try {
+    // 4️⃣ Call register API with axiosInstance
+    const res = await axiosInstance.post("/api/auth/register", userInfo);
+
+    // 5️⃣ Get JSON response
+    const data = res.data;
+    console.log("Register API response:", data);
+
+    // 6️⃣ If registration successful
+    if (res.status === 201) {
+      toast.success("Registration successful!");
+
+      // 7️⃣ ✅ Auto-login using NextAuth credentials
+      const result = await signIn("credentials", {
+        redirect: false, // false রাখলে popup/redirect না হবে, আমরা console এ result check করব
+        email,
+        password,
+      });
+
+      console.log("Auto login result:", result);
+
+      // 8️⃣ Check login success
+      if (!result.error) {
+        toast.success("Login successful!");
+        window.location.href = "/"; // 9️⃣ Redirect to home
+      } else {
+        toast.error(result.error); // Login error
+      }
+    } else {
+      // 10️⃣ Registration error
+      toast.error(data.error || "Registration failed");
+    }
+
+    setLoading(false); // 11️⃣ Loading stop
+  } catch (error) {
+    console.error(error);
+    toast.error("Something went wrong!"); // 12️⃣ Catch block error
+    setLoading(false); // Stop loading even on error
+  }
+};
+console.log(profilePic,'THIS IS IMAGE ');
   const handleImageUpload = async (e) => {
     const image = e.target.files[0];
     if (image) {
@@ -53,7 +95,7 @@ const page = () => {
     const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_KEY}`;
 
     const res = await axios.post(imagUploadUrl, formData);
-
+console.log("Image upload response:", res.data,image,formData);
     setProfilePic(res.data.data.url);
   };
 
@@ -203,12 +245,12 @@ const page = () => {
                 "CREATE ACCOUNT"
               )}
             </button>
-            
+
             <p className="pt-3 text-lg text-gray-500 font-bold">
               Already have an account?{" "}
               <span className="text-custom-accent-secondary">Login</span>
             </p>
-            <SocialLogin/>
+            <SocialLogin />
           </form>
         </div>
       </div>

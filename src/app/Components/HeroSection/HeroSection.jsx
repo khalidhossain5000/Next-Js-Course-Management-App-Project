@@ -48,7 +48,7 @@ worldwide since 2022
         </div>
 
         {/* Right Side Image */}
-        <div className="flex-1  relative w-full h-96 xl:h-[400px] 2xl:[500px]">
+        <div className="flex-1  relative w-full h-96 xl:h-[550px] 2xl:[700px]">
           <Image
             src={bannerImg}
             alt="Hero Side Graphic"

@@ -7,6 +7,8 @@ import { Drawer, IconButton } from "@mui/material";
 import { FaBars } from "react-icons/fa";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
+
+
 const NavBar = () => {
   const links = (
     <>
@@ -26,6 +28,7 @@ const NavBar = () => {
   );
   const [open, setOpen] = useState(false);
   const { data: session, status } = useSession();
+  console.log('this is session',session);
   // sticky code statd
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
@@ -62,7 +65,14 @@ const NavBar = () => {
         <div>
           {status === "authenticated" ? (
             <div className="flex items-center space-x-4">
-              <p>Welcome, {session.user.name || session.user.email}</p>
+             <Image
+  src={session.user.image}
+  alt={session.user.name}
+  width={40}
+  height={40}
+  className="rounded-full"
+/>
+              <p>{session.user.name}</p>
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
                 className="px-3 py-1 bg-red-500 text-white rounded"

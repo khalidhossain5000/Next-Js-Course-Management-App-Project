@@ -20,7 +20,7 @@ export const authOptions = {
       },
       async authorize(credentials) {
         const client = await clientPromise; 
-        const db = client.db("nextauth-db"); 
+        const db = client.db("Next-Js-Course-Management-Project"); 
 
         const user = await db
           .collection("users")
@@ -33,10 +33,30 @@ export const authOptions = {
 
         if (!isValid) throw new Error("Incorrect password");
 
-        return { id: user._id, name: user.name, email: user.email };
+        return { 
+          id: user._id.toString(), 
+          name: user.name, 
+          email: user.email ,
+          image: user.profileImage };
       },
     }),
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      if (token) {
+        session.user.id = token.id;
+        session.user.image = token.image;
+      }
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.image = user.image;
+      }
+      return token;
+    },
+  },
   session: { strategy: "jwt" },
   pages: { signIn: "/login" },
 };

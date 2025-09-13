@@ -33,9 +33,12 @@ export async function POST(req) {
     // Insert user into DB
     const result = await db.collection("users").insertOne(newUser);
 
-    return new Response(JSON.stringify({ message: "User registered successfully" }), {
-      status: 201,
-    });
+    return new Response(
+      JSON.stringify({ message: "User registered successfully" }),
+      {
+        status: 201,
+      }
+    );
   } catch (error) {
     console.error(error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
