@@ -1,3 +1,4 @@
+import Faq from '@/app/Components/FaqSections/Faq';
 import FeaturedCourse from '@/app/Components/FeaturedCourse/FeaturedCourse';
 import Featuredinstructors from '@/app/Components/Featuredinstructors/Featuredinstructors';
 import HeroSection from '@/app/Components/HeroSection/HeroSection';
@@ -13,6 +14,7 @@ const HomePage = () => {
             <FeaturedCourse/>
             <InfoSection/>
             <Featuredinstructors/>
+            <Faq/>
         </div>
     );
 };
