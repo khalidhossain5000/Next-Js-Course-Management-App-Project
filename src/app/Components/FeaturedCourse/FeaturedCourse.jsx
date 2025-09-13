@@ -44,52 +44,52 @@ const FeaturedCourse = () => {
           </p>
         </div>
         {/* COURSE CONTAINER START */}
-         <div className="pt-12 lg:pt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {coursesData.map((course) => (
-          <div
-            key={course.id}
-            className="relative bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300"
-          >
-            {/* Course Image */}
-            <Image
-              src={course.courseImage}
-              alt={course.courseName}
-              width={400}
-              height={200}
-              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-            />
+        <div className="pt-12 lg:pt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {coursesData.map((course) => (
+            <div
+              key={course.id}
+              className="relative bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300"
+            >
+              {/* Course Image */}
+              <Image
+                src={course.courseImage}
+                alt={course.courseName}
+                width={400}
+                height={200}
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
 
-            {/* Course Info */}
-            <div className="p-4">
-              <h3 className="text-xl font-semibold text-gray-800">
-                {course.courseName}
-              </h3>
-              <div className="flex items-center mt-2 text-sm text-gray-500">
-                <span>{course.lessonTime}</span>
-                <span className="mx-2">|</span>
-                <span className="text-yellow-500">{course.rating} ★</span>
+              {/* Course Info */}
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-800">
+                  {course.courseName}
+                </h3>
+                <div className="flex items-center mt-2 text-sm text-gray-500">
+                  <span>{course.lessonTime}</span>
+                  <span className="mx-2">|</span>
+                  <span className="text-yellow-500">{course.rating} ★</span>
+                </div>
+                <div className="flex items-center mt-4">
+                  <Image
+                    src={course.instructorImage}
+                    alt={course.instructorName}
+                    width={40}
+                    height={40}
+                    className="rounded-full border-2 border-white"
+                  />
+                  <span className="ml-2 text-sm text-gray-600">
+                    {course.instructorName}
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center mt-4">
-                <Image
-                  src={course.instructorImage}
-                  alt={course.instructorName}
-                  width={40}
-                  height={40}
-                  className="rounded-full border-2 border-white"
-                />
-                <span className="ml-2 text-sm text-gray-600">
-                  {course.instructorName}
-                </span>
-              </div>
+
+              {/* Buy Now Button */}
+              <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300">
+                {course.buyNowButton}
+              </button>
             </div>
-
-            {/* Buy Now Button */}
-            <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300">
-              {course.buyNowButton}
-            </button>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </section>
   );
