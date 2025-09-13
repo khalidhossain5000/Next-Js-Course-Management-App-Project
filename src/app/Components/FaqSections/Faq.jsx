@@ -61,7 +61,7 @@ const Faq = () => {
               <AccordionSummary
                 expandIcon={<HiOutlineChevronDown className="text-custom-primary w-6 h-6" />}
               >
-                <span className="font-semibold text-custom-text text-xl lg:text-2xl">
+                <span className="font-semibold text-custom-text text-md lg:text-2xl">
                   {faq.question}
                 </span>
               </AccordionSummary>
