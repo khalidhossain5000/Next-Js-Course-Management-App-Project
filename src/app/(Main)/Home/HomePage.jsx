@@ -1,4 +1,5 @@
 import FeaturedCourse from '@/app/Components/FeaturedCourse/FeaturedCourse';
+import Featuredinstructors from '@/app/Components/Featuredinstructors/Featuredinstructors';
 import HeroSection from '@/app/Components/HeroSection/HeroSection';
 import InfoSection from '@/app/Components/InfoSection/InfoSection';
 import TopCategories from '@/app/Components/TopCategories/TopCategories';
@@ -11,6 +12,7 @@ const HomePage = () => {
             <TopCategories/>
             <FeaturedCourse/>
             <InfoSection/>
+            <Featuredinstructors/>
         </div>
     );
 };

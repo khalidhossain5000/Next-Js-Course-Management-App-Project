@@ -8,7 +8,7 @@ import { LuBadgeCheck } from "react-icons/lu";
 
 const InfoSection = () => {
   return (
-    <div className="container mx-auto py-12 lg:py-22 flex items-center flex-col lg:flex-row">
+    <div className="container mx-auto py-12 lg:py-24 flex items-center flex-col lg:flex-row gap-6 lg:gap-12">
       <div className="contetns flex-1">
         <h3 className="font-bold text-lg lg:text-xl capitalize text-custom-accent-secondary">
           What’s New
@@ -24,43 +24,32 @@ const InfoSection = () => {
         {/* card contianer */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12">
           {/* card1 */}
-          <div
-            className="flex items-center gap-6 justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2"
-          >
-            <IoBookOutline className="text-6xl text-custom-accent-secondary"/>
+          <div className="flex items-center gap-6 justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
+            <IoBookOutline className="text-6xl text-custom-accent-secondary" />
             {/* Name */}
             <h3 className="text-[#685F78] text-center lg:text-left mx-auto font-semibold lg:max-w-6xl text-base md:text-lg">
-             Get certified with 100+ certification courses
+              Get certified with 100+ certification courses
             </h3>
           </div>
           {/* card2 */}
-          <div
-             
-            className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2"
-          >
-            <FaRegUser className="text-6xl text-custom-accent-secondary"/>
+          <div className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
+            <FaRegUser className="text-6xl text-custom-accent-secondary" />
             {/* Name */}
             <h3 className="text-[#685F78] text-center lg:text-left mx-auto font-semibold lg:max-w-6xl text-base md:text-lg">
               ContentStay motivated with engaging instructors
             </h3>
           </div>
           {/* card3 */}
-          <div
-             
-            className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2"
-          >
-            <CiCloudOn className="text-6xl text-custom-accent-secondary"/>
+          <div className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
+            <CiCloudOn className="text-6xl text-custom-accent-secondary" />
             {/* Name */}
             <h3 className="text-[#685F78] text-center lg:text-left mx-auto font-semibold lg:max-w-6xl text-base md:text-lg">
               Keep up with in the latest in cloud
             </h3>
           </div>
           {/* card4 */}
-          <div
-             
-            className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2"
-          >
-            <LuBadgeCheck className="text-6xl text-custom-accent-secondary"/>
+          <div className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
+            <LuBadgeCheck className="text-6xl text-custom-accent-secondary" />
             {/* Name */}
             <h3 className="text-[#685F78] text-center lg:text-left mx-auto font-semibold lg:max-w-6xl text-base md:text-lg">
               Build skills your way, from labs to courses
