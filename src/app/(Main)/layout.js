@@ -3,6 +3,7 @@ import "../globals.css";
 import { Inter } from "next/font/google";
 import NavBar from "../Components/NavBar/NavBar";
 import { SessionProvider } from "next-auth/react";
+import Footer from "../Components/Footer/Footer";
 
 
 
@@ -27,6 +28,9 @@ export default function MainLayout({ children }) {
           <NavBar/>
         </header>
         {children}
+        <footer>
+          <Footer/>
+        </footer>
         </SessionProvider>
       </div>
    
