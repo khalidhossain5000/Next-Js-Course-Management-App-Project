@@ -1,26 +1,28 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { signIn } from "next-auth/react";
-
+import { ImSpinner9 } from "react-icons/im";
 import toast from "react-hot-toast";
 
+
 const SocialLogin = () => {
-  
+    const [loading, setLoading] = useState(false);
 //   const location = useLocation();
-    // const navigate = useNavigate();
-    const from = location.state?.from || '/';
+    
+    // const from = location.state?.from || '/';
 
- const handleGoogleSignIn = async () => {
-  const result = await signIn("google");
-
-  if (result?.error) {
-    toast.error("Google login failed!");
-  } else {
-    toast.success("Google login successful!");
-    window.location.href = "/"; // Login successful হলে home page redirect
-  }
-};
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      const result = await signIn("google", { redirect: false,callbackUrl: "/" });
+      console.log(result);
+       
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
 
    
   return (
@@ -38,7 +40,12 @@ const SocialLogin = () => {
       >
         <FcGoogle size={32} />
 
-        <p>Continue with Google</p>
+       
+        {loading ? (
+                <ImSpinner9 className="animate-spin m-auto" />
+              ) : (
+                "Continue with Google"
+              )}
       </div>
     </div>
   );
