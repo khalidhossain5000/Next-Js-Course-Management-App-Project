@@ -20,7 +20,7 @@ const Coursedetails = () => {
     },
   });
   const course = courses?.find((c) => c._id === id);
-  console.log("this is coruse", course, id, courses);
+
   return (
     <section className="mt-12 lg:mt-32">
       <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
