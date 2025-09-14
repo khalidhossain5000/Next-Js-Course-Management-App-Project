@@ -28,6 +28,7 @@ import { toast } from "react-hot-toast";
 import { FiTrash2 } from "react-icons/fi"; // <-- React Icon
 import axios from "axios";
 import { FiEdit2 } from "react-icons/fi";
+import Link from "next/link";
 
 const AllCourses = () => {
   const queryClient = useQueryClient();
@@ -136,20 +137,21 @@ const AllCourses = () => {
                         <Tooltip title="Delete Course">
                           <button
                             onClick={() => handleDelete(course._id)}
-                            className="flex items-center gap-2 px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+                            className="flex items-center gap-2 px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors cursor-pointer"
                           >
                             <FiTrash2 className="w-5 h-5" />
                             Delete
                           </button>
                         </Tooltip>
                         <Tooltip title="Update Course">
+                            <Link href={`/Dashboard/updateCourse/${course._id}`}>
                           <button
-                            onClick={() => handleUpdate(course._id)}
-                            className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                            className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors cursor-pointer"
                           >
                             <FiEdit2 className="w-5 h-5" />
                             Update
                           </button>
+                          </Link>
                         </Tooltip>
                       </Box>
                     </TableCell>
