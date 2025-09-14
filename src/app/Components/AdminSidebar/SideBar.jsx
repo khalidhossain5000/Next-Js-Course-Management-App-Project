@@ -42,9 +42,9 @@ const SideBar = ({ onClose }) => {
     },
 
     {
-      text: "Delete Course",
+      text: "My Payment History",
       icon: <FiSettings className="w-5 h-5" />,
-      path: "/dashboard/admin-all-pet",
+      path: "/Dashboard/MyPaymentHistory",
     },
     {
       text: "Update Course",

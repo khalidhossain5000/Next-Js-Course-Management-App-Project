@@ -39,3 +39,36 @@ export const POST = async (req) => {
     });
   }
 };
+
+
+
+
+
+// GET - Get Payment History by email
+export const GET = async (req) => {
+  try {
+    const { searchParams } = new URL(req.url);
+    const email = searchParams.get("email"); // ?email=user@example.com
+
+    if (!email) {
+      return new Response(JSON.stringify({ message: "Email is required" }), {
+        status: 400,
+      });
+    }
+
+    const client = await clientPromise;
+    const db = client.db("Next-Js-Course-Management-Project");
+    const checkoutCollection = db.collection("checkout");
+
+    const payments = await checkoutCollection
+      .find({ enrollEmail: email })
+      .toArray();
+
+    return new Response(JSON.stringify(payments), { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return new Response(JSON.stringify({ message: "Internal Server Error" }), {
+      status: 500,
+    });
+  }
+};

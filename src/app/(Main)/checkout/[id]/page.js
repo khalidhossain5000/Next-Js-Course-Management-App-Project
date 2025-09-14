@@ -16,8 +16,8 @@ const Checkout = () => {
   const { id } = useParams();
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [transactionId, setTransactionId] = useState("");
-  const [checkoutLoading,setCheckoutLoading]=useState(false)
- const { data: session, status } = useSession();
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const { data: session, status } = useSession();
 
   // Fetch all courses
   const {
@@ -33,9 +33,8 @@ const Checkout = () => {
   });
   const course = courses?.find((c) => c._id === id);
 
-
-   const handleSubmit =async (e) => {
-    setCheckoutLoading(true)
+  const handleSubmit = async (e) => {
+    setCheckoutLoading(true);
     e.preventDefault();
     if (!selectedPayment || !transactionId) {
       toast.error("Please select payment method and enter transaction ID");
@@ -44,29 +43,28 @@ const Checkout = () => {
     const checkOutData = {
       selectedPayment,
       transactionId,
-      courseName:course?.courseName,
-      coursePrice:course?.coursePrice,
-      enrollEmail:session?.user?.email
+      courseName: course?.courseName,
+      coursePrice: course?.coursePrice,
+      enrollEmail: session?.user?.email,
     };
-    
-try {
-    const response = await axios.post("/api/checkout", checkOutData);
 
-    if (response.status === 201) {
-      toast.success(" Checkout completed successfully!");
-      setCheckoutLoading(false)
-      // Optional: reset form or redirect user
+    try {
+      const response = await axios.post("/api/checkout", checkOutData);
+
+      if (response.status === 201) {
+        toast.success(" Checkout completed successfully!");
+        setCheckoutLoading(false);
+        // Optional: reset form or redirect user
+      }
+    } catch (error) {
+      setCheckoutLoading(false);
+      toast.error(" Failed to complete checkout!");
     }
-  } catch (error) {
-    
-    setCheckoutLoading(false)
-    toast.error(" Failed to complete checkout!");
-  }
     // Clear form
     setSelectedPayment(null);
     setTransactionId("");
   };
-  
+
   return (
     <section className=" my-22">
       <div className="py-9 lg:py-16 bg-gradient-to-tr from-[#fde0de] via-[#e7f3fa] to-[#e0f1ff]">
@@ -139,9 +137,7 @@ try {
               type="submit"
               className="w-full py-3 bg-custom-accent-secondary text-white font-semibold rounded-lg hover:bg-custom-accent-primary transition cursor-pointer"
             >
-              {
-                checkoutLoading ? 'Payment Processing.......' : "Submit Payment"
-              }
+              {checkoutLoading ? "Payment Processing......." : "Submit Payment"}
             </button>
           </div>
         </form>
