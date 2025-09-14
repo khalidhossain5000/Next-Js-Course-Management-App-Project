@@ -33,7 +33,7 @@ const SideBar = ({ onClose }) => {
     {
       text: "All Courses",
       icon: <FiUsers className="w-5 h-5" />,
-      path: "/Dashboard/AddCourses",
+      path: "/Dashboard/AllCourses",
     },
     {
       text: "Add Course",

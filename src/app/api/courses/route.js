@@ -1,12 +1,11 @@
 import clientPromise from "@/app/lib/mongodb";
 
-
 export async function POST(req) {
   try {
     const body = await req.json(); // ফর্ম থেকে আসা ডেটা
 
     const client = await clientPromise;
-    const db = client.db("Next-Js-Course-Management-Project"); 
+    const db = client.db("Next-Js-Course-Management-Project");
     const collection = db.collection("courses");
 
     const result = await collection.insertOne(body);
@@ -22,15 +21,7 @@ export async function POST(req) {
   }
 }
 
-
-
-
-
-
-
-
-
-//COURSE GET API START HERE 
+//COURSE GET API START HERE
 
 export async function GET(req) {
   try {
@@ -47,14 +38,11 @@ export async function GET(req) {
     });
   } catch (error) {
     console.error(error);
-    return new Response(
-      JSON.stringify({ error: "Failed to fetch courses" }),
-      {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    return new Response(JSON.stringify({ error: "Failed to fetch courses" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 }
