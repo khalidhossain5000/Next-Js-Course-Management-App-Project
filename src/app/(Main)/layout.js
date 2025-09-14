@@ -4,17 +4,19 @@ import { Inter } from "next/font/google";
 import NavBar from "../Components/NavBar/NavBar";
 import { SessionProvider } from "next-auth/react";
 import Footer from "../Components/Footer/Footer";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Configure Inter
 const inter = Inter({
   subsets: ["latin"],
   display: "swap", // recommended for performance
 });
-
+const queryClient = new QueryClient();
 export default function MainLayout({ children }) {
   return (
     <div className={`${inter.className} antialiased`}>
       <SessionProvider>
+        <QueryClientProvider client={queryClient}>
         <header>
           <NavBar />
         </header>
@@ -22,6 +24,7 @@ export default function MainLayout({ children }) {
         <footer>
           <Footer />
         </footer>
+        </QueryClientProvider>
       </SessionProvider>
     </div>
   );

@@ -27,7 +27,6 @@ const NavBar = () => {
   );
   const [open, setOpen] = useState(false);
   const { data: session, status } = useSession();
-  console.log("this is session", session);
   // sticky code statd
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {

@@ -1,12 +1,28 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import bgImage from "../../../assets/BgImage/banner.png";
 import bgIcon from "../../../assets/BgImage/course-bg.png";
-import { coursesData } from "./Data"; // adjust path
+import insImg from "../../../assets/InstructorImg/user-01-4.jpg";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const FeaturedCourse = () => {
+  // Fetch all courses
+  const {
+    data: courses,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["allCourses"],
+    queryFn: async () => {
+      const res = await axios.get("/api/courses");
+      return res.data;
+    },
+  });
+  console.log(courses, "this is courses in home page featured section ");
   return (
-    <section className="relative w-full h-screen overflow-hidden lg:pt-6 pt-24">
+    <section className="relative w-full py-6 lg:py-24">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -44,55 +60,70 @@ const FeaturedCourse = () => {
           </p>
         </div>
         {/* COURSE CONTAINER START */}
-        <div className="pt-12 lg:pt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coursesData.map((course) => (
+        <div className="pt-12 lg:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses?.slice(0, 6).map((course) => (
             <div
               key={course.id}
-              className="relative bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300"
+              className="relative bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 p-6"
             >
               {/* Course Image */}
               <Image
                 src={course.courseImage}
                 alt={course.courseName}
-                width={400}
+                width={600}
                 height={200}
-                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full rounded-xl shadow-xl mx-auto h-48 lg:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
 
               {/* Course Info */}
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-gray-800">
-                  {course.courseName}
+                  {course.courseName.length > 30
+                    ? course.courseName.slice(0, 30) + "..."
+                    : course.courseName}
                 </h3>
-                <div className="flex items-center mt-2 text-sm text-gray-500">
-                  <span>{course.lessonTime}</span>
-                  <span className="mx-2">|</span>
-                  <span className="text-yellow-500">{course.rating} ★</span>
+
+                <div className="flex items-center mt-2 text-[#685F78] font-bold text-lg lg:text-xl py-6 justify-between">
+                  <h2>
+                    <span className="text-custom-text">Price : </span>
+                    {course.coursePrice}
+                  </h2>
+                  <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3 cursor-pointer">
+                    {course?.courseCategory}
+                  </button>
                 </div>
-                <div className="flex items-center mt-4">
+              </div>
+              {/* BUTTON AND TEXT */}
+              <div className="flex items-center justify-between ">
+                
+                <div className="flex items-center  mt-4">
                   <Image
-                    src={course.instructorImage}
+                    src={insImg}
                     alt={course.instructorName}
                     width={40}
                     height={40}
                     className="rounded-full border-2 border-white"
                   />
-                  <span className="ml-2 text-sm text-gray-600">
-                    {course.instructorName}
-                  </span>
+                  <div>
+                    <span className="ml-2 text-lg font-medium text-[#685F78]">
+                      {course.instructorName}
+                    </span>
+                    <h3 className="ml-2 text-sm font-medium text-custom-text">
+                      Instructor
+                    </h3>
+                  </div>
                 </div>
+                {/* Buy Now Button */}
+                <button className=" bottom-4 left-1/2 transform -translate-x-1/2 bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300 cursor-pointer">
+                  Buy Now
+                </button>
               </div>
-
-              {/* Buy Now Button */}
-              <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300">
-                {course.buyNowButton}
-              </button>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
+  );+
 };
 
 export default FeaturedCourse;

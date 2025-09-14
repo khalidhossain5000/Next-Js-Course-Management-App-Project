@@ -4,6 +4,7 @@ import bgImage from "../../../assets/BgImage/banner.png";
 import { instructors } from "./data";
 
 const Featuredinstructors = () => {
+   
   return (
    <section className="relative w-full lg:pt-6 ">
       {/* Background Image */}
