@@ -144,13 +144,11 @@ const AllCourses = () => {
                           </button>
                         </Tooltip>
                         <Tooltip title="Update Course">
-                            <Link href={`/Dashboard/updateCourse/${course._id}`}>
-                          <button
-                            className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors cursor-pointer"
-                          >
-                            <FiEdit2 className="w-5 h-5" />
-                            Update
-                          </button>
+                          <Link href={`/Dashboard/updateCourse/${course._id}`}>
+                            <button className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors cursor-pointer">
+                              <FiEdit2 className="w-5 h-5" />
+                              Update
+                            </button>
                           </Link>
                         </Tooltip>
                       </Box>
@@ -175,7 +173,10 @@ const AllCourses = () => {
         >
           <DialogTitle>Confirm Delete</DialogTitle>
           <DialogContent>
-            <Typography></Typography>
+            <Typography>
+              Are you sure you want to delete this item? This action cannot be
+              undone.
+            </Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setDeleteDialogOpen(false)}>Cancel</Button>
