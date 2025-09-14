@@ -23,9 +23,11 @@ import {
   Box,
   Alert,
 } from "@mui/material";
+
 import { toast } from "react-hot-toast";
 import { FiTrash2 } from "react-icons/fi"; // <-- React Icon
 import axios from "axios";
+import { FiEdit2 } from "react-icons/fi";
 
 const AllCourses = () => {
   const queryClient = useQueryClient();
@@ -33,7 +35,11 @@ const AllCourses = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   // Fetch all courses
-  const { data: courses, isLoading, error } = useQuery({
+  const {
+    data: courses,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["allCourses"],
     queryFn: async () => {
       const res = await axios.get("/api/courses");
@@ -89,7 +95,9 @@ const AllCourses = () => {
             <Table sx={{ minWidth: 650 }} aria-label="all courses table">
               <TableHead>
                 <TableRow sx={{ backgroundColor: "#f5f5f5" }}>
-                  <TableCell sx={{ fontWeight: "bold" }}>Course Image</TableCell>
+                  <TableCell sx={{ fontWeight: "bold" }}>
+                    Course Image
+                  </TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Course Name</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Category</TableCell>
                   <TableCell sx={{ fontWeight: "bold" }}>Instructor</TableCell>
@@ -113,27 +121,35 @@ const AllCourses = () => {
                     </TableCell>
                     <TableCell>
                       <Chip
-                        label={course.category}
+                        label={course?.courseCategory}
                         size="small"
                         color="primary"
                         variant="outlined"
                       />
                     </TableCell>
-                    <TableCell>{course.instructor}</TableCell>
+                    <TableCell>{course?.instructorName}</TableCell>
                     <TableCell sx={{ fontWeight: "bold", color: "#3B82F6" }}>
-                      ${course.price || 0}
+                      ${course?.coursePrice || 0}
                     </TableCell>
                     <TableCell>
                       <Box display="flex" gap={1}>
                         <Tooltip title="Delete Course">
-                          <IconButton
-                            color="error"
-                            size="small"
+                          <button
                             onClick={() => handleDelete(course._id)}
-                            disabled={deleteCourseMutation.isPending}
+                            className="flex items-center gap-2 px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
                           >
-                            <FiTrash2 /> {/* React Icon */}
-                          </IconButton>
+                            <FiTrash2 className="w-5 h-5" />
+                            Delete
+                          </button>
+                        </Tooltip>
+                        <Tooltip title="Update Course">
+                          <button
+                            onClick={() => handleUpdate(course._id)}
+                            className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                          >
+                            <FiEdit2 className="w-5 h-5" />
+                            Update
+                          </button>
                         </Tooltip>
                       </Box>
                     </TableCell>
@@ -157,9 +173,7 @@ const AllCourses = () => {
         >
           <DialogTitle>Confirm Delete</DialogTitle>
           <DialogContent>
-            <Typography>
-            
-            </Typography>
+            <Typography></Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setDeleteDialogOpen(false)}>Cancel</Button>
