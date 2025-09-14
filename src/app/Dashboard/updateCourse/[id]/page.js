@@ -28,7 +28,11 @@ const UpdateCoursePage = () => {
   const queryClient = useQueryClient();
 
   // Fetch single course using TanStack Query
-  const { data: courseData, isLoading, error } = useQuery({
+  const {
+    data: courseData,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["course", courseId],
     queryFn: async () => {
       const res = await axiosInstance.get(`/api/courses/${courseId}`);
@@ -39,7 +43,10 @@ const UpdateCoursePage = () => {
   // Mutation for updating course
   const updateCourseMutation = useMutation({
     mutationFn: async (updatedCourse) => {
-      const res = await axiosInstance.patch(`/api/courses/${courseId}`, updatedCourse);
+      const res = await axiosInstance.patch(
+        `/api/courses/${courseId}`,
+        updatedCourse
+      );
       return res.data;
     },
     onSuccess: () => {
@@ -60,7 +67,10 @@ const UpdateCoursePage = () => {
 
     const finalCourseData = {
       ...updatedData,
-      courseImage: profilePic || courseData.courseImage || "https://i.ibb.co/zVB99J4d/DEFAULT.jpg",
+      courseImage:
+        profilePic ||
+        courseData.courseImage ||
+        "https://i.ibb.co/zVB99J4d/DEFAULT.jpg",
       courseCategory: selectedCategory?.value || courseData.courseCategory,
     };
 
@@ -96,13 +106,18 @@ const UpdateCoursePage = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6 text-custom-text">Update Course</h1>
+      <h1 className="text-3xl font-bold mb-6 text-custom-text">
+        Update Course
+      </h1>
 
       <div className="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto">
         <form onSubmit={handleCourseUpdate} className="space-y-6">
           {/* Course Name */}
           <div>
-            <label htmlFor="courseName" className="block text-sm font-medium text-custom-text">
+            <label
+              htmlFor="courseName"
+              className="block text-sm font-medium text-custom-text"
+            >
               Course Name
             </label>
             <input
@@ -117,7 +132,10 @@ const UpdateCoursePage = () => {
 
           {/* Course Image Upload */}
           <div>
-            <label htmlFor="courseImage" className="block text-sm font-medium text-custom-text">
+            <label
+              htmlFor="courseImage"
+              className="block text-sm font-medium text-custom-text"
+            >
               Course Image
             </label>
             <input
@@ -141,7 +159,10 @@ const UpdateCoursePage = () => {
 
           {/* Course Category */}
           <div>
-            <label htmlFor="courseCategory" className="block text-sm font-medium text-custom-text mb-1">
+            <label
+              htmlFor="courseCategory"
+              className="block text-sm font-medium text-custom-text mb-1"
+            >
               Course Category
             </label>
             <Select
@@ -157,7 +178,10 @@ const UpdateCoursePage = () => {
 
           {/* Instructor Name */}
           <div>
-            <label htmlFor="instructorName" className="block text-sm font-medium text-custom-text">
+            <label
+              htmlFor="instructorName"
+              className="block text-sm font-medium text-custom-text"
+            >
               Instructor Name
             </label>
             <input
@@ -172,7 +196,10 @@ const UpdateCoursePage = () => {
 
           {/* Price */}
           <div>
-            <label htmlFor="coursePrice" className="block text-sm font-medium text-custom-text">
+            <label
+              htmlFor="coursePrice"
+              className="block text-sm font-medium text-custom-text"
+            >
               Price ($)
             </label>
             <input
@@ -182,6 +209,22 @@ const UpdateCoursePage = () => {
               defaultValue={courseData.coursePrice}
               placeholder="Enter price"
               className="mt-1 block w-full rounded-lg border border-gray-300 p-3 focus:border-custom-accent-secondary focus:ring focus:ring-custom-accent-secondary focus:ring-opacity-30"
+            />
+          </div>
+          {/* Description */}
+          <div>
+            <label
+              htmlFor="courseDescription"
+              className="block text-sm font-medium text-custom-text"
+            >
+              Description
+            </label>
+            <textarea
+              id="courseDescription"
+              name="courseDescription"
+              placeholder="Enter course description"
+              className="mt-1 block w-full rounded-lg border border-gray-300 p-3 focus:border-custom-accent-secondary focus:ring focus:ring-custom-accent-secondary focus:ring-opacity-30 resize-none"
+              rows={4}
             />
           </div>
 

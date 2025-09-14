@@ -6,6 +6,7 @@ import bgIcon from "../../../assets/BgImage/course-bg.png";
 import insImg from "../../../assets/InstructorImg/user-01-4.jpg";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 const FeaturedCourse = () => {
   // Fetch all courses
@@ -95,7 +96,6 @@ const FeaturedCourse = () => {
               </div>
               {/* BUTTON AND TEXT */}
               <div className="flex items-center justify-between ">
-                
                 <div className="flex items-center  mt-4">
                   <Image
                     src={insImg}
@@ -118,12 +118,20 @@ const FeaturedCourse = () => {
                   Buy Now
                 </button>
               </div>
+              {/* view more btn */}
+              <div className=" text-center pt-3 lg:pt-9">
+                <Link href={`/courses/${course._id}`}>
+                  <button className="bg-custom-accent-secondary text-white py-[7px] px-4 rounded-[55px] text-sm font-semibold gap-2 cursor-pointer w-9/12 mx-auto">
+                    View More
+                  </button>
+                </Link>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );+
+  );
 };
 
 export default FeaturedCourse;

@@ -16,29 +16,32 @@ const categories = [
 ];
 
 const AddCourse = () => {
-  const axiosInstance=useAxios()
+  const axiosInstance = useAxios();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [profilePic, setProfilePic] = useState("");
-  const handleCourseSubmit =async (e) => {
+  const handleCourseSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const courseData = Object.fromEntries(new FormData(form).entries());
-    const finalCourseData={
+    const finalCourseData = {
       ...courseData,
-      courseImage:profilePic || "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"
-    }
-      try {
-    const response = await axiosInstance.post("/api/courses", finalCourseData);
+      courseImage: profilePic || "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg",
+    };
+    try {
+      const response = await axiosInstance.post(
+        "/api/courses",
+        finalCourseData
+      );
 
-    if (response.status === 201) {
-      toast.success("Course Added successfully!");
-      form.reset();
-      setProfilePic(null); // যদি ইমেজ state থাকে
+      if (response.status === 201) {
+        toast.success("Course Added successfully!");
+        form.reset();
+        setProfilePic(null); // যদি ইমেজ state থাকে
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("❌ Failed to save course");
     }
-  } catch (error) {
-    console.error(error);
-    toast.error("❌ Failed to save course");
-  }
   };
   const handleCourseImage = async (e) => {
     const image = e.target.files[0];
@@ -146,6 +149,22 @@ const AddCourse = () => {
               name="coursePrice"
               placeholder="Enter price"
               className="mt-1 block w-full rounded-lg border border-gray-300 p-3 focus:border-custom-accent-secondary focus:ring focus:ring-custom-accent-secondary focus:ring-opacity-30"
+            />
+          </div>
+          {/* Description */}
+          <div>
+            <label
+              htmlFor="courseDescription"
+              className="block text-sm font-medium text-custom-text"
+            >
+              Description
+            </label>
+            <textarea
+              id="courseDescription"
+              name="courseDescription"
+              placeholder="Enter course description"
+              className="mt-1 block w-full rounded-lg border border-gray-300 p-3 focus:border-custom-accent-secondary focus:ring focus:ring-custom-accent-secondary focus:ring-opacity-30 resize-none"
+              rows={4}
             />
           </div>
 
