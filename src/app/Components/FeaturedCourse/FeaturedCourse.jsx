@@ -62,9 +62,9 @@ const FeaturedCourse = () => {
         </div>
         {/* COURSE CONTAINER START */}
         <div className="pt-12 lg:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses?.slice(0, 6).map((course) => (
+          {courses?.slice(0, 6).map((course,i) => (
             <div
-              key={course.id}
+              key={i}
               className="relative bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 p-6"
             >
               {/* Course Image */}
