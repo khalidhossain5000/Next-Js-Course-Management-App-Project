@@ -21,7 +21,7 @@ const NavBar = () => {
         <Link href={"/Dashboard"}> Dashboard</Link>
       </li>
       <li>
-        <Link href={"/"}>Contact Us</Link>
+        <Link href={"/contact-us"}>Contact Us</Link>
       </li>
     </>
   );
