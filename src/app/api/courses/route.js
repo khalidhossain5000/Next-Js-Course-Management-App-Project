@@ -21,3 +21,40 @@ export async function POST(req) {
     });
   }
 }
+
+
+
+
+
+
+
+
+
+//COURSE GET API START HERE 
+
+export async function GET(req) {
+  try {
+    const client = await clientPromise;
+    const db = client.db("Next-Js-Course-Management-Project"); //DB name
+
+    const courses = await db.collection("courses").find({}).toArray();
+
+    return new Response(JSON.stringify(courses), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return new Response(
+      JSON.stringify({ error: "Failed to fetch courses" }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
+}
