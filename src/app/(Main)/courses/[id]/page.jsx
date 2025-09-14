@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import React from "react";
 
@@ -79,9 +80,11 @@ const Coursedetails = () => {
                     {course?.coursePrice}
                   </li>
                 </ul>
-                <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+               <Link href={`/checkout/${course?._id}`}>
+                <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer">
                   Enroll Now
                 </button>
+               </Link>
               </div>
             </div>
           </div>
