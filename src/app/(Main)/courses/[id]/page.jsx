@@ -27,7 +27,7 @@ const Coursedetails = () => {
         {/* Header with Gradient */}
         <div className="w-full max-w-6xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-center py-6 bg-gradient-to-r from-[#fef8f7] via-[#eaf2f9] to-[#deedff] bg-clip-text text-custom-text">
-            {course.courseName}
+            {course?.courseName}
           </h1>
         </div>
 
@@ -36,8 +36,8 @@ const Coursedetails = () => {
           {/* Course Image */}
           <div className="w-full h-96 overflow-hidden rounded-lg mb-6">
             <img
-              src={course.courseImage}
-              alt={course.courseName}
+              src={course?.courseImage}
+              alt={course?.courseName}
               className="w-full h-full object-cover"
             />
           </div>
@@ -50,7 +50,7 @@ const Coursedetails = () => {
                 Course Description
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                {course.courseDescription}
+                {course?.courseDescription}
               </p>
             </div>
 
@@ -62,21 +62,21 @@ const Coursedetails = () => {
                 </h2>
                 <ul className="space-y-3 text-gray-600">
                   <li>
-                    <span className="font-medium">Course ID:</span> {course._id}
+                    <span className="font-medium">Course ID:</span> {course?._id}
                   </li>
                   <li>
                     <span className="font-medium">Category:</span>{" "}
-                    {course.courseCategory
+                    {course?.courseCategory
                       .replace("-", " ")
                       .replace(/\b\w/g, (c) => c.toUpperCase())}
                   </li>
                   <li>
                     <span className="font-medium">Instructor:</span>{" "}
-                    {course.instructorName}
+                    {course?.instructorName}
                   </li>
                   <li>
                     <span className="font-medium">Price:</span> $
-                    {course.coursePrice}
+                    {course?.coursePrice}
                   </li>
                 </ul>
                 <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
