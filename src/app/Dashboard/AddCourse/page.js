@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import Image from "next/image";
+import axios from "axios";
 
 // Sample categories for React-Select
 const categories = [
@@ -13,9 +14,30 @@ const categories = [
   { value: "marketing", label: "Marketing" },
 ];
 
-const  AddCourse = () => {
+const AddCourse = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [profilePic, setProfilePic] = useState("");
+  const handleCourseSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const courseData = Object.fromEntries(new FormData(form).entries());
+    const finalCourseData={
+      ...courseData,
+      courseImage:profilePic
+    }
+    console.log(courseData, profilePic, "this are full data");
+  };
+  const handleCourseImage = async (e) => {
+    const image = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
 
+    const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_KEY}`;
+    const res = await axios.post(imagUploadUrl, formData);
+
+    setProfilePic(res.data.data.url);
+  };
+  console.log(profilePic);
   return (
     <div className="p-6">
       {/* Page Title */}
@@ -25,7 +47,7 @@ const  AddCourse = () => {
 
       {/* Form Container */}
       <div className="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto">
-        <form className="space-y-6">
+        <form onSubmit={handleCourseSubmit} className="space-y-6">
           {/* Course Name */}
           <div>
             <label
@@ -55,6 +77,7 @@ const  AddCourse = () => {
               type="file"
               id="courseImage"
               name="courseImage"
+              onChange={handleCourseImage}
               accept="image/*"
               className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-custom-accent-primary file:text-white hover:file:bg-custom-accent-secondary"
             />
@@ -116,10 +139,10 @@ const  AddCourse = () => {
           {/* Submit Button Placeholder */}
           <div>
             <button
-              type="button"
-              className="px-6 py-3 bg-custom-accent-secondary text-white rounded-lg font-medium hover:bg-custom-accent-primary transition-colors"
+              type="submit"
+              className="px-6 py-3 bg-custom-accent-secondary text-white rounded-lg font-medium hover:bg-custom-accent-primary transition-colors cursor-pointer"
             >
-              Save Course
+              Add Course
             </button>
           </div>
         </form>
@@ -128,4 +151,4 @@ const  AddCourse = () => {
   );
 };
 
-export default  AddCourse;
+export default AddCourse;
