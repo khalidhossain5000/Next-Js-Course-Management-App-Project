@@ -4,28 +4,41 @@ import React, { useState } from "react";
 import Select from "react-select";
 import Image from "next/image";
 import axios from "axios";
+import useAxios from "@/app/Hooks/useAxios";
+import toast from "react-hot-toast";
 
 // Sample categories for React-Select
 const categories = [
   { value: "web-development", label: "Web Development" },
-  { value: "mobile-development", label: "Mobile Development" },
   { value: "data-science", label: "Data Science" },
-  { value: "design", label: "Design" },
+  { value: "graphic-design", label: "Graphic Design" },
   { value: "marketing", label: "Marketing" },
 ];
 
 const AddCourse = () => {
+  const axiosInstance=useAxios()
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [profilePic, setProfilePic] = useState("");
-  const handleCourseSubmit = (e) => {
+  const handleCourseSubmit =async (e) => {
     e.preventDefault();
     const form = e.target;
     const courseData = Object.fromEntries(new FormData(form).entries());
     const finalCourseData={
       ...courseData,
-      courseImage:profilePic
+      courseImage:profilePic || "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"
     }
-    console.log(courseData, profilePic, "this are full data");
+      try {
+    const response = await axiosInstance.post("/api/courses", finalCourseData);
+
+    if (response.status === 201) {
+      toast.success("Course Added successfully!");
+      form.reset();
+      setProfilePic(null); // যদি ইমেজ state থাকে
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error("❌ Failed to save course");
+  }
   };
   const handleCourseImage = async (e) => {
     const image = e.target.files[0];
