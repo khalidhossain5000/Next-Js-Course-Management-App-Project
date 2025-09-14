@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 const paymentOptions = [
   { value: "rocket", label: "Rocket" },
@@ -13,20 +14,10 @@ const paymentOptions = [
 ];
 const Checkout = () => {
   const { id } = useParams();
-    const [selectedPayment, setSelectedPayment] = useState(null);
+  const [selectedPayment, setSelectedPayment] = useState(null);
   const [transactionId, setTransactionId] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!selectedPayment || !transactionId) {
-      toast.error("Please select payment method and enter transaction ID");
-      return;
-    }
-    // এখানে তুমি API call বা submit logic implement করতে পারো
-    toast.success("Payment submitted successfully!");
-    // Clear form
-    setSelectedPayment(null);
-    setTransactionId("");
-  };
+  const [checkoutLoading,setCheckoutLoading]=useState(false)
+ const { data: session, status } = useSession();
 
   // Fetch all courses
   const {
@@ -41,7 +32,41 @@ const Checkout = () => {
     },
   });
   const course = courses?.find((c) => c._id === id);
-  console.log('this is courses',courses,course,'this is single course');
+
+
+   const handleSubmit =async (e) => {
+    setCheckoutLoading(true)
+    e.preventDefault();
+    if (!selectedPayment || !transactionId) {
+      toast.error("Please select payment method and enter transaction ID");
+      return;
+    }
+    const checkOutData = {
+      selectedPayment,
+      transactionId,
+      courseName:course?.courseName,
+      coursePrice:course?.coursePrice,
+      enrollEmail:session?.user?.email
+    };
+    
+try {
+    const response = await axios.post("/api/checkout", checkOutData);
+
+    if (response.status === 201) {
+      toast.success(" Checkout completed successfully!");
+      setCheckoutLoading(false)
+      // Optional: reset form or redirect user
+    }
+  } catch (error) {
+    
+    setCheckoutLoading(false)
+    toast.error(" Failed to complete checkout!");
+  }
+    // Clear form
+    setSelectedPayment(null);
+    setTransactionId("");
+  };
+  
   return (
     <section className=" my-22">
       <div className="py-9 lg:py-16 bg-gradient-to-tr from-[#fde0de] via-[#e7f3fa] to-[#e0f1ff]">
@@ -112,9 +137,11 @@ const Checkout = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-3 bg-custom-accent-secondary text-white font-semibold rounded-lg hover:bg-custom-accent-primary transition"
+              className="w-full py-3 bg-custom-accent-secondary text-white font-semibold rounded-lg hover:bg-custom-accent-primary transition cursor-pointer"
             >
-              Submit Payment
+              {
+                checkoutLoading ? 'Payment Processing.......' : "Submit Payment"
+              }
             </button>
           </div>
         </form>
