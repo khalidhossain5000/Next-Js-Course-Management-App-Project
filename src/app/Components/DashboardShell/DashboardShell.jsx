@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { FiMenu } from "react-icons/fi";
 import SideBar from "../AdminSidebar/SideBar";
+import { useSession,signOut } from "next-auth/react";
 
 const DashboardShell = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -13,9 +14,10 @@ const DashboardShell = ({ children }) => {
     setMobileOpen((s) => !s);
   };
 
-  // তুমি চাইলে ইন্টারনাল থেকে বা layout থেকে user পাস করতে পারো পরে
-  const user = { photoURL: "/avatar-placeholder.jpg", name: "Admin" };
+  const { data: session, status } = useSession();
+ const user = session?.user;
 
+  
   return (
     <div className="flex h-screen bg-light-secondary">
       {/* Mobile Overlay */}
@@ -56,7 +58,7 @@ const DashboardShell = ({ children }) => {
               <div className="hidden md:flex items-center space-x-2">
                 <div className="flex items-center justify-center">
                   <Image
-                    src={user?.photoURL}
+                    src={user?.image}
                     alt="Admin-photo"
                     width={32}
                     height={32}

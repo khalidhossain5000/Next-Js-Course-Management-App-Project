@@ -60,10 +60,7 @@ const SideBar = ({ onClose }) => {
     }
   };
 
-  const handleLogout = () => {
-    // Add logout logic here
-    console.log("Logout clicked");
-  };
+   
 
   return (
     <div className="flex flex-col h-full bg-white">
@@ -119,8 +116,8 @@ const SideBar = ({ onClose }) => {
       {/* Logout Section */}
       <div className="p-3 border-t border-gray-200">
         <button
-          onClick={handleLogout}
-          className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200"
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 cursor-pointer"
         >
           <FiLogOut className="w-5 h-5 text-gray-500" />
           <span className="font-medium">Logout</span>
