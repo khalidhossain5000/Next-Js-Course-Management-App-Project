@@ -7,6 +7,7 @@ import insImg from "../../../assets/InstructorImg/user-01-4.jpg";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
+import { Skeleton, Box } from "@mui/material";
 
 const FeaturedCourse = () => {
   // Fetch all courses
@@ -62,72 +63,108 @@ const FeaturedCourse = () => {
         </div>
         {/* COURSE CONTAINER START */}
         <div className="pt-12 lg:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses?.slice(0, 6).map((course,i) => (
-            <div
-              key={i}
-              className="relative bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 p-6"
-            >
-              {/* Course Image */}
-              <Image
-                src={course.courseImage}
-                alt={course.courseName}
-                width={600}
-                height={200}
-                className="w-full rounded-xl shadow-xl mx-auto h-48 lg:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-
-              {/* Course Info */}
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-800">
-                  {course.courseName.length > 30
-                    ? course.courseName.slice(0, 30) + "..."
-                    : course.courseName}
-                </h3>
-
-                <div className="flex items-center mt-2 text-[#685F78] font-bold text-lg lg:text-xl py-6 justify-between">
-                  <h2>
-                    <span className="text-custom-text">Price : </span>
-                    {course.coursePrice}
-                  </h2>
-                  <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3 cursor-pointer">
-                    {course?.courseCategory}
-                  </button>
-                </div>
-              </div>
-              {/* BUTTON AND TEXT */}
-              <div className="flex items-center justify-between ">
-                <div className="flex items-center  mt-4">
-                  <Image
-                    src={insImg}
-                    alt={course.instructorName}
-                    width={40}
-                    height={40}
-                    className="rounded-full border-2 border-white"
+          {!courses
+            ? // Skeleton Loader দেখানো
+              [...Array(6)].map((_, i) => (
+                <Box
+                  key={i}
+                  className="relative bg-white rounded-lg shadow-lg overflow-hidden group p-6"
+                >
+                  {/* Course Image Skeleton */}
+                  <Skeleton
+                    variant="rectangular"
+                    height={200}
+                    className="w-full rounded-xl mb-4"
                   />
-                  <div>
-                    <span className="ml-2 text-lg font-medium text-[#685F78]">
-                      {course.instructorName}
-                    </span>
-                    <h3 className="ml-2 text-sm font-medium text-custom-text">
-                      Instructor
+                  {/* Course Name Skeleton */}
+                  <Skeleton
+                    variant="text"
+                    height={30}
+                    width="80%"
+                    className="mb-2"
+                  />
+                  {/* Price Skeleton */}
+                  <Skeleton variant="text" height={25} width="40%" />
+                  {/* Instructor Skeleton */}
+                  <div className="flex items-center mt-4 gap-2">
+                    <Skeleton variant="circular" width={40} height={40} />
+                    <Skeleton variant="text" height={25} width="60%" />
+                  </div>
+                  {/* Button Skeleton */}
+                  <Skeleton
+                    variant="rectangular"
+                    height={40}
+                    width="100%"
+                    className="mt-4 rounded-full"
+                  />
+                </Box>
+              ))
+            : courses.slice(0, 6).map((course, i) => (
+                <div
+                  key={i}
+                  className="relative bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300 p-6"
+                >
+                  {/* Course Image */}
+                  <Image
+                    src={course.courseImage}
+                    alt={course.courseName}
+                    width={600}
+                    height={200}
+                    className="w-full rounded-xl shadow-xl mx-auto h-48 lg:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+
+                  {/* Course Info */}
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold text-gray-800">
+                      {course.courseName.length > 30
+                        ? course.courseName.slice(0, 30) + "..."
+                        : course.courseName}
                     </h3>
+
+                    <div className="flex items-center mt-2 text-[#685F78] font-bold text-lg lg:text-xl py-6 justify-between">
+                      <h2>
+                        <span className="text-custom-text">Price : </span>
+                        {course.coursePrice}
+                      </h2>
+                      <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3 cursor-pointer">
+                        {course?.courseCategory}
+                      </button>
+                    </div>
+                  </div>
+                  {/* BUTTON AND TEXT */}
+                  <div className="flex items-center justify-between ">
+                    <div className="flex items-center  mt-4">
+                      <Image
+                        src={insImg}
+                        alt={course.instructorName}
+                        width={40}
+                        height={40}
+                        className="rounded-full border-2 border-white"
+                      />
+                      <div>
+                        <span className="ml-2 text-lg font-medium text-[#685F78]">
+                          {course.instructorName}
+                        </span>
+                        <h3 className="ml-2 text-sm font-medium text-custom-text">
+                          Instructor
+                        </h3>
+                      </div>
+                    </div>
+                    {/* Buy Now Button */}
+                    <button className=" bottom-4 left-1/2 transform -translate-x-1/2 bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300 cursor-pointer">
+                      Buy Now
+                    </button>
+                  </div>
+                  {/* view more btn */}
+                  <div className=" text-center pt-3 lg:pt-9">
+                    <Link href={`/courses/${course._id}`}>
+                      <button className="bg-custom-accent-secondary text-white py-[7px] px-4 rounded-[55px] text-sm font-semibold gap-2 cursor-pointer w-9/12 mx-auto">
+                        View More
+                      </button>
+                    </Link>
                   </div>
                 </div>
-                {/* Buy Now Button */}
-                <button className=" bottom-4 left-1/2 transform -translate-x-1/2 bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300 cursor-pointer">
-                  Buy Now
-                </button>
-              </div>
-              {/* view more btn */}
-              <div className=" text-center pt-3 lg:pt-9">
-                <Link href={`/courses/${course._id}`}>
-                  <button className="bg-custom-accent-secondary text-white py-[7px] px-4 rounded-[55px] text-sm font-semibold gap-2 cursor-pointer w-9/12 mx-auto">
-                    View More
-                  </button>
-                </Link>
-              </div>
-            </div>
-          ))}
+              ))}
         </div>
       </div>
     </section>

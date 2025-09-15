@@ -14,7 +14,6 @@ const AllCourses = () => {
   const {
     data: courses,
     isLoading,
-    error,
   } = useQuery({
     queryKey: ["allCourses"],
     queryFn: async () => {
