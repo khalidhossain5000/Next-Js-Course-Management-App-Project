@@ -1,28 +1,37 @@
-import { getToken } from "next-auth/jwt";
+// src/middleware.js
 import { NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
+
+const protectedPaths = ["/Dashboard", "/courses"];
 
 export async function middleware(req) {
-  
-  const protectedPaths = ["/","/Dashboard","/Dashboard/:path*"]; //protected page route
+  const url = req.nextUrl;
+  const { pathname } = url;
 
-  const url = req.nextUrl.clone();
-  
-  // request path protectedPaths
-  if (protectedPaths.some((path) => url.pathname.startsWith(path))) {
-  
-    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-console.log('this iIS FROM IDLEA MIDLEWARE',token,url);
+  // চেক করবো path protected কিনা
+  const isProtected = protectedPaths.some((path) =>
+    pathname.startsWith(path)
+  );
+
+  if (isProtected) {
+    // NextAuth এর টোকেন বের করবো
+    const token = await getToken({
+      req,
+      secret: process.env.NEXTAUTH_SECRET,
+    });
+
+    // যদি লগইন না করা থাকে → login এ redirect
     if (!token) {
-      // logged out user → redirect to login
-      url.pathname = "/Auth/Login";
+      url.pathname = "/Auth/Login"; // তোমার login page
       return NextResponse.redirect(url);
     }
   }
 
+  // allow the request
   return NextResponse.next();
 }
-console.log('this is middleware');
 
+// কোন কোন route এ middleware চলবে সেটা matcher দিয়ে বলে দিচ্ছি
 export const config = {
-  matcher: ["/","/Dashboard","/Dashboard/:path*"], // 
+  matcher: ["/Dashboard/:path*", "/courses/:path*"],
 };
