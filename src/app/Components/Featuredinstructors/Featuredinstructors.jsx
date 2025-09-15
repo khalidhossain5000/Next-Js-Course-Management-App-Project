@@ -38,7 +38,7 @@ const Featuredinstructors = () => {
           </p>
         </div>
         {/* INSTRUCTORS GRID */}
-        <div className="py-12 lg:py-22 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="px-3 lg:px-0 py-12 lg:py-22 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <Slide triggerOnce  direction="left" cascade damping={0.2}  duration={2000}>
           {instructors.map((instructor) => (
             <div

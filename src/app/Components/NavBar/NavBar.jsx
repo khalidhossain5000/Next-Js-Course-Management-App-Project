@@ -54,9 +54,7 @@ const NavBar = () => {
   }, []);
   // sticky code ends
 
-
-
-    if (status === "loading") {
+  if (status === "loading") {
     // Loading state
     return (
       <div className="flex items-center justify-center">
@@ -82,11 +80,14 @@ const NavBar = () => {
         </div>
 
         <div>
-          
           {status === "authenticated" ? (
             <div className="flex items-center space-x-4">
               <Image
-                src={session?.user? session.user.image : "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"}
+                src={
+                  session?.user
+                    ? session.user.image
+                    : "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"
+                }
                 alt={session.user.name}
                 width={40}
                 height={40}
@@ -116,13 +117,6 @@ const NavBar = () => {
               </Link>
             </div>
           )}
-
-
-
-
-
-
-
         </div>
       </nav>
       {/* MOBILE MENU */}
@@ -153,7 +147,50 @@ const NavBar = () => {
               </div>
 
               {/* Links */}
-              <ul className="flex flex-col gap-4 text-lg">{links}</ul>
+              <div className="flex flex-col justify-between  h-full">
+             <div>
+               <ul className="flex flex-col gap-4 text-lg">{links}</ul>
+             </div>
+              <div>
+                {status === "authenticated" ? (
+                  <div className="flex items-center space-x-4">
+                    <Image
+                      src={
+                        session?.user
+                          ? session.user.image
+                          : "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"
+                      }
+                      alt={session.user.name}
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                    />
+                    <p>{session.user.name}</p>
+                    <button
+                      onClick={() => signOut({ callbackUrl: "/" })}
+                      className="px-3 py-1 bg-red-500 text-white rounded cursor-pointer"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <div className="auth-buttons flex items-center">
+                    <Link href={"/Auth/Login"}>
+                      <button className="bg-custom-accent-primary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 mr-3 cursor-pointer">
+                        <FaUser />
+                        Sign In
+                      </button>
+                    </Link>
+                    <Link href={"/Auth/Register"}>
+                      <button className="bg-custom-accent-secondary text-white py-[7px] px-4 flex items-center rounded-[55px] text-sm font-semibold gap-2 cursor-pointer">
+                        <FaUser />
+                        Register
+                      </button>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
             </div>
           </Drawer>
         </div>

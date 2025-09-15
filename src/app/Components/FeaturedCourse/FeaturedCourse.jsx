@@ -58,7 +58,7 @@ const FeaturedCourse = () => {
               Featured Courses
             </Fade>
           </h1>
-          <p className="text-[#685F78] text-center mx-auto font-semibold lg:max-w-6xl text-base md:text-lg  ">
+          <p className="text-[#685F78] text-center mx-auto lg:font-semibold lg:max-w-6xl text-base md:text-lg px-3 xl:px-0 ">
             <Fade direction="up" duration={1000} delay={200} triggerOnce>
             Explore our top courses carefully curated to help you advance your
             skills and achieve your learning goals. Find courses in technology,
@@ -67,7 +67,7 @@ const FeaturedCourse = () => {
           </p>
         </div>
         {/* COURSE CONTAINER START */}
-        <div className="pt-12 lg:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="pt-12 lg:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3 xl:px-0">
           <Slide direction="up" cascade damping={0.2} triggerOnce>
           {!courses
             ? // Skeleton Loader দেখানো
@@ -121,13 +121,13 @@ const FeaturedCourse = () => {
 
                   {/* Course Info */}
                   <div className="p-4">
-                    <h3 className="text-xl font-semibold text-gray-800">
+                    <h3 className="lg:text-xl font-semibold text-gray-800">
                       {course.courseName.length > 30
                         ? course.courseName.slice(0, 30) + "..."
                         : course.courseName}
                     </h3>
 
-                    <div className="flex items-center mt-2 text-[#685F78] font-bold text-lg lg:text-xl py-6 justify-between">
+                    <div className="flex items-center flex-col lg:flex-row mt-2 text-[#685F78] font-bold text-lg lg:text-xl py-6 justify-between space-y-3 xl:space-y-0">
                       <h2>
                         <span className="text-custom-text">Price : </span>
                         {course.coursePrice}
@@ -138,7 +138,7 @@ const FeaturedCourse = () => {
                     </div>
                   </div>
                   {/* BUTTON AND TEXT */}
-                  <div className="flex items-center justify-between ">
+                  <div className="flex flex-col lg:flex-row items-center justify-between ">
                     <div className="flex items-center  mt-4">
                       <Image
                         src={insImg}
@@ -157,9 +157,11 @@ const FeaturedCourse = () => {
                       </div>
                     </div>
                     {/* Buy Now Button */}
-                    <button className=" bottom-4 left-1/2 transform -translate-x-1/2 bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300 cursor-pointer">
+                    <div className="text-center py-3 xl:py-0">
+                      <button className=" bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300 cursor-pointer">
                       Buy Now
                     </button>
+                    </div>
                   </div>
                   {/* view more btn */}
                   <div className=" text-center pt-3 lg:pt-9">

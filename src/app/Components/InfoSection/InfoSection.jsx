@@ -11,19 +11,19 @@ const InfoSection = () => {
   return (
     <div className="container mx-auto py-12 lg:py-24 flex items-center flex-col lg:flex-row gap-6 lg:gap-12">
       <div className="contetns flex-1">
-        <h3 className="font-bold text-lg lg:text-xl capitalize text-custom-accent-secondary">
+        <h3 className="text-center lg:text-left font-bold text-lg lg:text-xl capitalize text-custom-accent-secondary px-3 xl:px-0" >
           What’s New
         </h3>
-        <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold leading-tight py-6 lg:py-12">
+        <h1 className="text-custom-text text-sm text-center lg:text-left md:text-2xl lg:text-3xl xl:text-5xl font-semibold leading-tight py-6 lg:py-12 ">
           <Fade cascade damping={1e-1} triggerOnce>
             Master the skills to drive your career
           </Fade>
         </h1>
-        <p className="text-[#685F78] text-center lg:text-left mx-auto font-semibold lg:max-w-6xl text-base md:text-lg  ">
+        <p className="text-[#685F78]  text-center lg:text-left mx-auto font-semibold lg:max-w-6xl text-base md:text-lg  ">
           Unlock the essential skills that will accelerate your professional growth. Learn practical techniques in communication, leadership, and problem-solving that top employers value. 
         </p>
         {/* card contianer */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12">
+        <div className="px-6 xl:px-0 grid grid-cols-1 md:grid-cols-2 gap-6 pt-12">
           <JackInTheBox 
            triggerOnce
           delay={200}

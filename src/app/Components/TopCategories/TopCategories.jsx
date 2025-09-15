@@ -15,7 +15,7 @@ const TopCategories = () => {
         Top Category
         </Fade>
       </h1>
-      <p className="text-[#685F78] text-center mx-auto font-semibold lg:max-w-6xl text-base md:text-lg pt-6 ">
+      <p className="text-[#685F78] text-center mx-auto lg:font-semibold lg:max-w-6xl text-base md:text-lg pt-6 px-3 lg:px-0">
         <Slide 
         direction="up"
         duration={1000}
@@ -27,7 +27,7 @@ const TopCategories = () => {
         skills and knowledge. Stay ahead with the content that matters most.
         </Slide>
       </p>
-      <div className="pt-12 lg:pt-24 container mx-auto categoies-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="pt-12 lg:pt-24 container mx-auto categoies-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 px-6 xl:px-0">
         <Slide direction="up" cascade damping={0.2} triggerOnce>
         {categoriesData.map((cat) => (
           <div
