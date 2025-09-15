@@ -27,9 +27,17 @@ const AllCourses = () => {
     { value: "graphic-design", label: "Graphic Design" },
     { value: "marketing", label: "Marketing" },
   ];
-  const filteredCourses = courses.filter((course) =>
-    course.courseName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCourses = courses.filter(course => {
+  const matchesSearch = course.courseName
+    .toLowerCase()
+    .includes(searchQuery.toLowerCase());
+
+  const matchesCategory = categoryFilter
+    ? course.courseCategory === categoryFilter.value
+    : true;
+
+  return matchesSearch && matchesCategory;
+});
 
   return (
     <section className=" my-22">
