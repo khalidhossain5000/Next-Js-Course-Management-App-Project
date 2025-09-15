@@ -29,6 +29,7 @@ const AllCourses = () => {
   const filteredCourses = courses.filter(course =>
   course.courseName.toLowerCase().includes(searchQuery.toLowerCase())
 );
+
   return (
     <section className=" my-22">
       <div className="py-9 lg:py-16 bg-gradient-to-tr from-[#fde0de] via-[#e7f3fa] to-[#e0f1ff]">
@@ -90,7 +91,7 @@ const AllCourses = () => {
 
         {/* Course Grid */}
         <div className="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 2xl:grid-cols-3">
-          {courses?.map((course) => (
+          {filteredCourses?.map((course) => (
             <div
               key={course._id}
               className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
