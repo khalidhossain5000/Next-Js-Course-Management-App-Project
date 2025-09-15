@@ -1,4 +1,5 @@
 "use client";
+import CustomLoader from "../../Components/CustomLoader/CustomLoader.jsx";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
@@ -27,7 +28,10 @@ const AllCourses = () => {
     { value: "graphic-design", label: "Graphic Design" },
     { value: "marketing", label: "Marketing" },
   ];
-  const filteredCourses = courses.filter(course => {
+
+if(isLoading) return <CustomLoader/>
+
+  const filteredCourses = courses?.filter(course => {
   const matchesSearch = course.courseName
     .toLowerCase()
     .includes(searchQuery.toLowerCase());
