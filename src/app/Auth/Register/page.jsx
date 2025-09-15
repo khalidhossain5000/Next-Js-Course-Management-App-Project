@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import SocialLogin from "@/app/Components/SocialLogin/SocialLogin";
 import { signIn } from "next-auth/react";
 import useAxios from "@/app/Hooks/useAxios";
+import Link from "next/link";
 const page = () => {
   const [profilePic, setProfilePic] = useState("");
   //   const [passwordError, setPasswordError] = useState("");
@@ -91,7 +92,7 @@ useEffect(() => {
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden ">
+    <section className="relative w-full lg:h-screen overflow-hidden ">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -117,10 +118,10 @@ useEffect(() => {
             className="object-contain mx-auto"
             priority={true}
           />
-          <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold relative text-center py-6 lg:py-9">
+          <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold relative text-center py-3 lg:py-9">
             Welcome to Dreams LMS.
           </h1>
-          <p className="text-sm text-gray-500 font-semibold max-w-lg text-center mx-auto">
+          <p className="text-sm text-gray-500 font-semibold max-w-lg text-center mx-auto mb-6">
             Platform designed to help organizations, educators, and learners
             manage, deliver, and track learning and training activities.
           </p>
@@ -128,11 +129,11 @@ useEffect(() => {
 
         {/* Right Side Image */}
 
-        <div className="w-full flex-1 mx-auto h-full p-12  bg-[#ffffff] p">
-          <div className="logoandback flex justify-between">
-            <Image src={logo} alt="Logo" width={200} />
-            <div className="back">
-              <h2>Back Home</h2>
+        <div className="w-full flex-1 mx-auto h-full p-12  bg-[#ffffff] ">
+          <div className="logoandback flex flex-col lg:flex-row justify-between">
+            <Image src={logo} alt="Logo" width={200} className="w-9/12lg:w-full"/>
+            <div className="back text-center lg:text-right pt-6 lg:pt-0">
+              <Link href={'/'}>Back Home</Link>
             </div>
           </div>
           <h2 className="pt-6 text-2xl font-bold mb-6 text-center lg:text-left">

@@ -9,6 +9,7 @@ import { signIn } from "next-auth/react";
 
 import toast from "react-hot-toast";
 import SocialLogin from "@/app/Components/SocialLogin/SocialLogin";
+import Link from "next/link";
 const page = () => {
   const [error, setError] = useState("");
 
@@ -37,7 +38,7 @@ const page = () => {
   };
 console.log(error);
   return (
-    <section className="relative w-full h-screen overflow-hidden ">
+    <section className="relative w-full lg:h-screen overflow-hidden ">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -63,10 +64,10 @@ console.log(error);
             className="object-contain mx-auto"
             priority={true}
           />
-          <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold relative text-center py-6 lg:py-9">
+          <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold relative text-center py-3 lg:py-9">
             Welcome to Dreams LMS.
           </h1>
-          <p className="text-sm text-gray-500 font-semibold max-w-lg text-center mx-auto">
+          <p className="text-sm text-gray-500 font-semibold max-w-lg text-center mx-auto mb-6 lg:mb-0">
             Platform designed to help organizations, educators, and learners
             manage, deliver, and track learning and training activities.
           </p>
@@ -75,13 +76,15 @@ console.log(error);
         {/* Right Side Image */}
 
         <div className="w-full flex-1 mx-auto h-full p-12 lg:p-16 bg-[#ffffff] p">
-          <div className="logoandback flex justify-between">
-            <Image src={logo} alt="Logo" width={200} />
+          <div className="logoandback flex flex-col lg:flex-row justify-between">
+            <Image src={logo} alt="Logo" width={200}  />
             <div className="back">
-              <h2>Back Home</h2>
+              <div className="back text-center lg:text-right pt-6 lg:pt-0">
+              <Link href={'/'}>Back Home</Link>
+            </div>
             </div>
           </div>
-          <h2 className="pt-22 text-2xl font-bold mb-6 text-center lg:text-left">
+          <h2 className="pt-9 lg:pt-22 text-2xl font-bold mb-6 text-center lg:text-left">
             Login
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
