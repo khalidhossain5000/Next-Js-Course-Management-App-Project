@@ -1,18 +1,32 @@
 import React from "react";
 import { categoriesData } from "./CategoiresData";
 import Image from "next/image";
+import { Fade, Slide } from "react-awesome-reveal";
 const TopCategories = () => {
   return (
     <div className="py-12 lg:py-24">
       <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold leading-tight text-center">
+        <Fade 
+        direction="up"
+        duration={1000}
+        delay={200}
+        >
         Top Category
+        </Fade>
       </h1>
       <p className="text-[#685F78] text-center mx-auto font-semibold lg:max-w-6xl text-base md:text-lg pt-6 ">
+        <Slide 
+        direction="up"
+        duration={1000}
+        delay={200}
+        >
         Discover our most popular categories carefully curated for you. Explore
         trending topics, in-demand courses, and resources to help you grow your
         skills and knowledge. Stay ahead with the content that matters most.
+        </Slide>
       </p>
       <div className="pt-12 lg:pt-24 container mx-auto categoies-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <Slide direction="up" cascade damping={0.2} triggerOnce>
         {categoriesData.map((cat) => (
           <div
             key={cat.id}
@@ -37,6 +51,7 @@ const TopCategories = () => {
             <p className=" text-center">{cat?.quantity} courses</p>
           </div>
         ))}
+        </Slide>
       </div>
     </div>
   );
