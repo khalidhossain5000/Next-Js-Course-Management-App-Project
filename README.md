@@ -94,13 +94,18 @@ http://localhost:3000
 
 ## Route Summary
 
-| Route | Method | Description | Protected |
-|-------|--------|-------------|-----------|
-| `/` | GET | Home page / Products | No |
-| `/login` | GET | Login page (Google OAuth) | No |
-| `/dashboard/add-product` | GET | Add new product page | Yes |
-| `/api/products` | POST | Add new product to MongoDB | Yes |
-| `/api/auth/[...nextauth]` | All | NextAuth authentication routes | N/A |
+## Route Summary
+
+| Route                     | Description                  | Access       |
+|----------------------------|------------------------------|-------------|
+| `/`                        | Home page                    | Public      |
+| `/about`                   | About page                   | Public      |
+| `/all-courses`             | All Courses page             | Public      |
+| `/contact-us`              | Contact Us page              | Public      |
+| `/dashboard`               | Dashboard main page          | Protected   |
+| `/dashboard/add-course`    | Add Course page              | Protected   |
+| `/courses/[id]`            | Course Detail page           | Protected   |
+
 
 **Note:** Protected routes require users to be logged in. Unauthenticated users will be redirected to `/login`.
 
