@@ -26,7 +26,9 @@ const AllCourses = () => {
     { value: "graphic-design", label: "Graphic Design" },
     { value: "marketing", label: "Marketing" },
   ];
-  console.log(searchQuery);
+  const filteredCourses = courses.filter(course =>
+  course.courseName.toLowerCase().includes(searchQuery.toLowerCase())
+);
   return (
     <section className=" my-22">
       <div className="py-9 lg:py-16 bg-gradient-to-tr from-[#fde0de] via-[#e7f3fa] to-[#e0f1ff]">
