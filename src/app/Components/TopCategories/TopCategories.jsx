@@ -10,6 +10,7 @@ const TopCategories = () => {
         direction="up"
         duration={1000}
         delay={200}
+        triggerOnce
         >
         Top Category
         </Fade>
@@ -19,6 +20,7 @@ const TopCategories = () => {
         direction="up"
         duration={1000}
         delay={200}
+        triggerOnce
         >
         Discover our most popular categories carefully curated for you. Explore
         trending topics, in-demand courses, and resources to help you grow your

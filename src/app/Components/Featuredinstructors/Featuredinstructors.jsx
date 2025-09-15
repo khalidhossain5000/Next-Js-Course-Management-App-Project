@@ -2,11 +2,11 @@ import Image from "next/image";
 import React from "react";
 import bgImage from "../../../assets/BgImage/banner.png";
 import { instructors } from "./data";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const Featuredinstructors = () => {
-   
   return (
-   <section className="relative w-full lg:pt-6 ">
+    <section className="relative w-full lg:pt-6 ">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -25,16 +25,21 @@ const Featuredinstructors = () => {
         {/*  Text Content */}
         <div className="pt-12 lg:pt-22 text-center lg:text-left space-y-3 lg:space-y-5 ">
           <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold leading-tight text-center">
-            Featured Instructor
+            <Fade direction="up" duration={1000} delay={200} triggerOnce>
+              Featured Instructor
+            </Fade>
           </h1>
           <p className="text-[#685F78] font-semibold lg:max-w-6xl text-base md:text-lg text-center mx-auto">
-            Learn from industry experts who bring real-world experience into the
-            classroom. Our instructors are dedicated to helping you gain
-            practical skills, build confidence, and achieve your career goals.
+            <Slide direction="up" duration={1000} delay={200} triggerOnce>
+              Learn from industry experts who bring real-world experience into
+              the classroom. Our instructors are dedicated to helping you gain
+              practical skills, build confidence, and achieve your career goals.
+            </Slide>
           </p>
         </div>
         {/* INSTRUCTORS GRID */}
         <div className="py-12 lg:py-22 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <Slide  direction="left" cascade damping={0.2}  duration={2000}>
           {instructors.map((instructor) => (
             <div
               key={instructor.id}
@@ -61,6 +66,7 @@ const Featuredinstructors = () => {
               </div>
             </div>
           ))}
+          </Slide >
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { IoBookOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { CiCloudOn } from "react-icons/ci";
 import { LuBadgeCheck } from "react-icons/lu";
+import { Fade, JackInTheBox } from "react-awesome-reveal";
 
 const InfoSection = () => {
   return (
@@ -14,15 +15,20 @@ const InfoSection = () => {
           What’s New
         </h3>
         <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-semibold leading-tight py-6 lg:py-12">
-          Master the skills to drive your career
+          <Fade cascade damping={1e-1} triggerOnce>
+            Master the skills to drive your career
+          </Fade>
         </h1>
         <p className="text-[#685F78] text-center lg:text-left mx-auto font-semibold lg:max-w-6xl text-base md:text-lg  ">
-          Master the skills to drive your career Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Eget aenean accumsan bibendum gravida
-          maecenas augue elementum et neque. Suspendisse imperdiet.
+          Unlock the essential skills that will accelerate your professional growth. Learn practical techniques in communication, leadership, and problem-solving that top employers value. 
         </p>
         {/* card contianer */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-12">
+          <JackInTheBox 
+           triggerOnce
+          delay={200}
+          duration={2000}
+          >
           {/* card1 */}
           <div className="flex items-center gap-6 justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
             <IoBookOutline className="text-6xl text-custom-accent-secondary" />
@@ -31,7 +37,13 @@ const InfoSection = () => {
               Get certified with 100+ certification courses
             </h3>
           </div>
+          </JackInTheBox>
           {/* card2 */}
+          <JackInTheBox 
+           triggerOnce
+          delay={200}
+          duration={2000}
+          >
           <div className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
             <FaRegUser className="text-6xl text-custom-accent-secondary" />
             {/* Name */}
@@ -39,7 +51,13 @@ const InfoSection = () => {
               ContentStay motivated with engaging instructors
             </h3>
           </div>
+          </JackInTheBox>
           {/* card3 */}
+          <JackInTheBox 
+           triggerOnce
+          delay={200}
+          duration={2000}
+          >
           <div className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
             <CiCloudOn className="text-6xl text-custom-accent-secondary" />
             {/* Name */}
@@ -47,7 +65,13 @@ const InfoSection = () => {
               Keep up with in the latest in cloud
             </h3>
           </div>
+          </JackInTheBox>
           {/* card4 */}
+          <JackInTheBox 
+           triggerOnce
+          delay={200}
+          duration={2000}
+          >
           <div className="flex gap-6 items-center justify-center bg-white rounded-lg  p-6 hover:shadow-xl shadow-md shadow-gray-300  transition duration-300 transform hover:-translate-y-2">
             <LuBadgeCheck className="text-6xl text-custom-accent-secondary" />
             {/* Name */}
@@ -55,6 +79,7 @@ const InfoSection = () => {
               Build skills your way, from labs to courses
             </h3>
           </div>
+          </JackInTheBox>
         </div>
       </div>
       <div className="imgs flex-1">

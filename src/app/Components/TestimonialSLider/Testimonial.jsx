@@ -12,6 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { testimonials } from "./Data"; // make sure image paths are in /public
+import { Fade, Slide } from "react-awesome-reveal";
 
 const Testimonial = () => {
   return (
@@ -20,15 +21,20 @@ const Testimonial = () => {
         {/* Heading */}
         <div className="text-center mb-14">
           <h2 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold leading-tight text-center">
-            What Our Students Say
+            <Fade direction="up" duration={1000} delay={200} triggerOnce>
+              What Our Students Say
+            </Fade>
           </h2>
           <p className="text-[#685F78] text-center mx-auto font-semibold lg:max-w-6xl text-base md:text-lg  ">
-            Hear from our learners about their experiences and how our courses
-            have helped them achieve their goals.
+            <Slide direction="up" duration={1000} delay={200} triggerOnce>
+              Hear from our learners about their experiences and how our courses
+              have helped them achieve their goals.
+            </Slide>
           </p>
         </div>
 
         {/* Swiper Slider */}
+        <Slide direction="up" cascade damping={0.2} triggerOnce>
         <div className="relative max-w-6xl mx-auto">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
@@ -84,6 +90,7 @@ const Testimonial = () => {
             <HiChevronRight className="w-6 h-6" />
           </div>
         </div>
+        </Slide>
       </div>
     </section>
   );

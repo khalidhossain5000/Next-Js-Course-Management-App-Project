@@ -8,6 +8,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { Skeleton, Box } from "@mui/material";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const FeaturedCourse = () => {
   // Fetch all courses
@@ -53,16 +54,21 @@ const FeaturedCourse = () => {
       <div className="relative z-10 h-full container mx-auto pt-12 lg:pt-16">
         <div className=" text-center lg:text-left space-y-3 lg:space-y-5 ">
           <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold leading-tight text-center">
-            Featured Courses
+            <Fade direction="up" duration={1000} delay={200} triggerOnce>
+              Featured Courses
+            </Fade>
           </h1>
           <p className="text-[#685F78] text-center mx-auto font-semibold lg:max-w-6xl text-base md:text-lg  ">
+            <Fade direction="up" duration={1000} delay={200} triggerOnce>
             Explore our top courses carefully curated to help you advance your
             skills and achieve your learning goals. Find courses in technology,
             business, design, and more.
+            </Fade>
           </p>
         </div>
         {/* COURSE CONTAINER START */}
         <div className="pt-12 lg:py-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Slide direction="up" cascade damping={0.2} triggerOnce>
           {!courses
             ? // Skeleton Loader দেখানো
               [...Array(6)].map((_, i) => (
@@ -165,6 +171,7 @@ const FeaturedCourse = () => {
                   </div>
                 </div>
               ))}
+              </Slide>
         </div>
       </div>
     </section>

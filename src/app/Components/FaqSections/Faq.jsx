@@ -2,6 +2,7 @@
 import React from "react";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { HiOutlineChevronDown } from "react-icons/hi";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const faqs = [
   {
@@ -38,11 +39,15 @@ const Faq = () => {
         {/* Heading */}
         <div className="text-center mb-10 pt-9">
           <h2 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold leading-tight text-center">
-            Frequently Asked Questions
+            <Fade direction="up" duration={1000} delay={200} triggerOnce>
+              Frequently Asked Questions
+            </Fade>
           </h2>
           <p className="text-[#685F78] text-center mx-auto font-semibold lg:max-w-6xl text-base md:text-lg pt-6 lg:pt-9">
-            Find quick answers to the most common questions about enrolling,
-            learning, and completing courses on our platform.
+            <Slide direction="up" duration={1000} delay={200} triggerOnce>
+              Find quick answers to the most common questions about enrolling,
+              learning, and completing courses on our platform.
+            </Slide>
           </p>
         </div>
 
@@ -59,7 +64,9 @@ const Faq = () => {
               }}
             >
               <AccordionSummary
-                expandIcon={<HiOutlineChevronDown className="text-custom-primary w-6 h-6" />}
+                expandIcon={
+                  <HiOutlineChevronDown className="text-custom-primary w-6 h-6" />
+                }
               >
                 <span className="font-semibold text-custom-text text-md lg:text-2xl">
                   {faq.question}
