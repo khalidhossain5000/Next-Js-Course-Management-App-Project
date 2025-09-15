@@ -16,74 +16,67 @@ const page = () => {
   //   const [passwordError, setPasswordError] = useState("");
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
- const axiosInstance=useAxios()
-
-
+  const axiosInstance = useAxios();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
     if (!profilePic) {
-    toast.error("Please wait, image is uploading!");
-    return;
-  }
-  const form = e.target;
-
-  // 1️⃣Get form values
-  const name = form.name.value;
-  const email = form.email.value;
-  const password = form.password.value;
-
-  // 2️⃣ Prepare user info for register API
-  const userInfo = {
-    name,
-    email,
-    password,
-    profileImage: profilePic, // profile pic যদি থাকে
-  };
-
-  setLoading(true); // 3️⃣ Loading start
-
-  try {
-    // 4️⃣ Call register API with axiosInstance
-    const res = await axiosInstance.post("/api/auth/register", userInfo);
-
-    // 5️⃣ Get JSON response
-    const data = res.data;
-    console.log("Register API response:", data);
-
-    // 6️⃣ If registration successful
-    if (res.status === 201) {
-      toast.success("Registration successful!");
-
-      // 7️⃣ ✅ Auto-login using NextAuth credentials
-      const result = await signIn("credentials", {
-        redirect: false, // false রাখলে popup/redirect না হবে, আমরা console এ result check করব
-        email,
-        password,
-      });
-
-      console.log("Auto login result:", result);
-
-      // 8️⃣ Check login success
-      if (!result.error) {
-        toast.success("Login successful!");
-        window.location.href = "/"; // 9️⃣ Redirect to home
-      } else {
-        toast.error(result.error); // Login error
-      }
-    } else {
-      // 10️⃣ Registration error
-      toast.error(data.error || "Registration failed");
+      toast.error("Please wait, image is uploading!");
+      return;
     }
+    const form = e.target;
 
-    setLoading(false); // 11️⃣ Loading stop
-  } catch (error) {
-    console.error(error);
-    toast.error("Something went wrong!"); // 12️⃣ Catch block error
-    setLoading(false); // Stop loading even on error
-  }
-};
-console.log(profilePic,'THIS IS IMAGE ');
+    // Get form values
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // Prepare user info for register API
+    const userInfo = {
+      name,
+      email,
+      password,
+      profileImage: profilePic,
+    };
+
+    setLoading(true);
+
+    try {
+      const res = await axiosInstance.post("/api/auth/register", userInfo);
+
+      const data = res.data;
+      console.log("Register API response:", data);
+
+      if (res.status === 201) {
+        toast.success("Registration successful!");
+
+        const result = await signIn("credentials", {
+          redirect: false,
+          email,
+          password,
+        });
+
+        console.log("Auto login result:", result);
+
+        if (!result.error) {
+          toast.success("Login successful!");
+          window.location.href = "/"; //  Redirect to home
+        } else {
+          toast.error(result.error); // Login error
+        }
+      } else {
+        // Registration error
+        toast.error(data.error || "Registration failed");
+      }
+
+      setLoading(false); //  Loading stop
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong!"); // Catch block error
+      setLoading(false); // Stop loading even on error
+    }
+  };
+  console.log(profilePic, "THIS IS IMAGE ");
   const handleImageUpload = async (e) => {
     const image = e.target.files[0];
     if (image) {
@@ -95,7 +88,6 @@ console.log(profilePic,'THIS IS IMAGE ');
     const imagUploadUrl = `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_KEY}`;
 
     const res = await axios.post(imagUploadUrl, formData);
-console.log("Image upload response:", res.data,image,formData);
     setProfilePic(res.data.data.url);
   };
 
