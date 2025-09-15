@@ -1,26 +1,15 @@
 'use client'
-import React from "react";
+import React, { useEffect } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import toast from "react-hot-toast";
-export const metadata = {
-  title: "Contact Us | Dream LMS",
-  description:
-    "Get in touch with Dream LMS. Reach out for support, inquiries, or any questions about our online courses and learning platform.",
-  openGraph: {
-    title: "Contact Us | Dream LMS",
-    description:
-      "Get in touch with Dream LMS. Reach out for support, inquiries, or any questions about our online courses and learning platform.",
-    type: "website",
-  },
-};
+
 
 const Contact = () => {
-    const handleContact=(e)=>{
-        e.preventDefault();
-        toast.success("Message sent successfully!")
-    }
+  useEffect(() => {
+    document.title = "Contact Us | Dream LMS";
+  }, []);
   return (
     <section className=" my-22">
       <div className="py-9 lg:py-16 bg-gradient-to-tr from-[#fde0de] via-[#e7f3fa] to-[#e0f1ff]">
@@ -89,7 +78,7 @@ const Contact = () => {
         {/* Right Form */}
         <div className="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
           <h3 className="text-xl font-semibold mb-6">Send Us Message</h3>
-          <form onSubmit={handleContact} className="space-y-4">
+          <form className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-1">
@@ -143,7 +132,8 @@ const Contact = () => {
             </div>
 
             <button
-              type="submit"
+              
+              onClick={() => toast.success("Message sent successfully!")}
               className="w-full bg-pink-500 text-white font-medium py-3 rounded-full hover:bg-pink-600 transition cursor-pointer"
             >
               Send Enquiry
@@ -155,15 +145,15 @@ const Contact = () => {
       {/* map */}
       <div className="container mx-auto">
         <div className="w-full h-[400px] pt-6">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.698682263777!2d90.40760871543143!3d23.79317879291286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70e72f8b6d1%3A0x5670e555c54f07b8!2sDhaka!5e0!3m2!1sen!2sbd!4v1692791433442!5m2!1sen!2sbd"
-        width="100%"
-        height="100%"
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.698682263777!2d90.40760871543143!3d23.79317879291286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70e72f8b6d1%3A0x5670e555c54f07b8!2sDhaka!5e0!3m2!1sen!2sbd!4v1692791433442!5m2!1sen!2sbd"
+            width="100%"
+            height="100%"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
     </section>
   );

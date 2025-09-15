@@ -30,7 +30,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* About / Logo */}
-          <div className="space-y-4 col-span-2">
+          <div className="space-y-4 xl:col-span-2">
             {/* Replace /footer-logo.png with your logo in /public */}
             <div className="w-40">
               <Image src={logo} 
@@ -60,7 +60,7 @@ const Footer = () => {
           </div>
 
           {/* Useful Links */}
-          <div className="px-6">
+          <div className="px-6 text-center lg:text-left">
             <h3 className="text-lg font-semibold mb-4 text-white">Useful Links</h3>
             <ul className="space-y-3">
               {usefulLinks.map((l) => (
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
 
           {/* Courses / Support */}
-          <div>
+          <div className="text-center lg:text-left">
             <h3 className="text-lg font-semibold mb-4 text-white">Courses & Support</h3>
             <ul className="space-y-3">
               {coursesLinks.map((l) => (
@@ -88,7 +88,7 @@ const Footer = () => {
           </div>
 
           {/* Contact & Newsletter */}
-          <div>
+          <div className="text-center lg:text-left">
             <h3 className="text-lg font-semibold mb-4 text-white">Contact Info</h3>
             <ul className="text-gray-300 space-y-2 mb-4">
               <li>Phone: <span className="text-white font-medium">310-437-2766</span></li>

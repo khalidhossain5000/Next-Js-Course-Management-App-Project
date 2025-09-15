@@ -26,7 +26,7 @@ export const metadata = {
 
 const Aboutus = () => {
   return (
-    <section className=" my-22">
+    <section className="overflow-x-hidden my-22">
       <div className="py-9 lg:py-16 bg-gradient-to-tr from-[#fde0de] via-[#e7f3fa] to-[#e0f1ff]">
         <h3 className="text-xl md:text-2xl lg:text-3xl text-center text-gray-950 font-bold">
           About Us
@@ -242,7 +242,7 @@ const Aboutus = () => {
             <h3 className="text-xl font-semibold text-custom-text mb-6">
               Featured Instructors
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Instructor card x4 (replace images & names) */}
               <div className="bg-white rounded-2xl shadow p-6 text-center">
                 <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
@@ -251,7 +251,7 @@ const Aboutus = () => {
                     width={200}
                     height={200}
                     alt="hero imag e"
-                    className="w-full rounded-tl-4xl lg:rounded-tl-[220px] lg:rounded-br-[220px] rounded-br-4xl"
+                    className="lg:w-full rounded-tl-4xl lg:rounded-tl-[220px] lg:rounded-br-[220px] rounded-br-4xl"
                   />
                 </div>
                 <h4 className="mt-4 font-semibold">Jane Doe</h4>
