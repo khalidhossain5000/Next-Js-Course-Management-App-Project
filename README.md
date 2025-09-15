@@ -9,9 +9,27 @@ Dream LMS – Course Management App is a simple full-stack web application built
 It’s a Next.js full-stack project with authentication, dynamic content fetching, and a responsive UI. Perfect for learning full-stack development with modern technologies.
 
 
-## Live Demo
+## Live Site
 
-https://next-js-task-simple-web-app.vercel.app/
+https://next-js-course-management-app-proje.vercel.app
+
+
+
+## Key Features
+
+- Full-Stack Next.js Application
+- User Authentication with NextAuth.js
+- Secure registration and login system for users.
+- Browse all available courses with details and descriptions.
+- Dynamic data fetching for real-time course updates.
+- Modern UI designed with Tailwind CSS for smooth user experience.
+- Users can enroll in courses and complete the checkout process smoothly.
+- Users can update existing courses with new content or details.
+- Users can add new courses including title, description, and content.
+- Dashboard to view and manage enrolled courses and track progress.
+- Smooth loading indicators for pages and data fetching.
+- Certain pages are protected and accessible only to logged-in users.
+
 
 
 
