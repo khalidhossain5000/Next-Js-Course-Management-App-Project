@@ -30,6 +30,23 @@ https://next-js-course-management-app-proje.vercel.app
 - Smooth loading indicators for pages and data fetching.
 - Certain pages are protected and accessible only to logged-in users.
 
+## Tech Stack
+- React
+- Next.js
+- Tailwind CSS
+- Material UI (@mui/material, @emotion/react, @emotion/styled)
+- React Awesome Reveal
+- React Hot Toast
+- React Icons
+- React Select
+- Swiper
+- React Spinners
+- Axios
+- MongoDB
+- Bcrypt
+- Bcryptjs
+- NextAuth.js
+- SweetAlert2
 
 
 
