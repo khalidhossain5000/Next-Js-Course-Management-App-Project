@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   Table,
@@ -47,7 +47,9 @@ const AllCourses = () => {
       return res.data;
     },
   });
-
+useEffect(() => {
+    document.title = "All Courses | Dream LMS";
+  }, []);
   // Delete course mutation
   const deleteCourseMutation = useMutation({
     mutationFn: async (courseId) => {
@@ -83,7 +85,7 @@ const AllCourses = () => {
         Error loading courses: {error.message}
       </Alert>
     );
-
+  
   return (
     <div className="bg-light-secondary min-h-screen py-8">
       <div className="container mx-auto px-4">

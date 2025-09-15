@@ -4,7 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Coursedetails = () => {
   const { id } = useParams();
@@ -21,7 +21,9 @@ const Coursedetails = () => {
     },
   });
   const course = courses?.find((c) => c._id === id);
-
+  useEffect(() => {
+    document.title = "Course Details | Dream LMS";
+  }, []);
   return (
     <section className="mt-12 lg:mt-32">
       <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">

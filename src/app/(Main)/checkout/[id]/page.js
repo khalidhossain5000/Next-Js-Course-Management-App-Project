@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
@@ -64,7 +64,9 @@ const Checkout = () => {
     setSelectedPayment(null);
     setTransactionId("");
   };
-
+  useEffect(() => {
+    document.title = "Checkout | Dream LMS";
+  }, []);
   return (
     <section className=" my-22">
       <div className="py-9 lg:py-16 bg-gradient-to-tr from-[#fde0de] via-[#e7f3fa] to-[#e0f1ff]">

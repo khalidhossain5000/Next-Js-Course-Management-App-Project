@@ -16,10 +16,13 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 const MyPaymentHistory = () => {
   const { data: session } = useSession();
-
+useEffect(() => {
+    document.title = "Payment History | Dream LMS";
+  }, []);
   // 🔹 Fetch payments with TanStack
   const { data: payments, isLoading, isError } = useQuery({
     queryKey: ["payments", session?.user?.email],

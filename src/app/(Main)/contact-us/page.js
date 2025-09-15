@@ -4,6 +4,17 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 import { FaEnvelope } from "react-icons/fa";
 import toast from "react-hot-toast";
+export const metadata = {
+  title: "Contact Us | Dream LMS",
+  description:
+    "Get in touch with Dream LMS. Reach out for support, inquiries, or any questions about our online courses and learning platform.",
+  openGraph: {
+    title: "Contact Us | Dream LMS",
+    description:
+      "Get in touch with Dream LMS. Reach out for support, inquiries, or any questions about our online courses and learning platform.",
+    type: "website",
+  },
+};
 
 const Contact = () => {
     const handleContact=(e)=>{

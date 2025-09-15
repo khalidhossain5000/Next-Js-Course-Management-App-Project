@@ -90,7 +90,9 @@ const UpdateCoursePage = () => {
 
     setProfilePic(res.data.url);
   };
-
+useEffect(() => {
+    document.title = "Update Course | Dream LMS";
+  }, []);
   useEffect(() => {
     if (courseData) {
       setSelectedCategory({

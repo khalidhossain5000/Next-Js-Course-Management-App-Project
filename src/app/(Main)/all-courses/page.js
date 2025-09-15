@@ -4,13 +4,17 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
+
+ 
 const AllCourses = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState(null);
-
+  useEffect(() => {
+    document.title = "All Courses | Dream LMS";
+  }, []);
   const {
     data: courses,
     isLoading,
