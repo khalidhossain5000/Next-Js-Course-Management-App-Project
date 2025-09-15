@@ -56,8 +56,8 @@ https://next-js-course-management-app-proje.vercel.app
 1.Clone the repository
 
 ```bash
-git clone https://github.com/khalidhossain5000/next-js-task-simple-web-app.git
-cd next-js-task-simple-web-app
+git clone https://github.com/khalidhossain5000/Next-Js-Course-Management-App-Project.git
+cd Next-Js-Course-Management-App-Project
 
 ```
 
