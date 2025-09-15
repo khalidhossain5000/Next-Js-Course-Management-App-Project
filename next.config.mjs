@@ -4,6 +4,7 @@ const nextConfig = {
     domains: [
         'lh3.googleusercontent.com',
           'i.ibb.co',
+          "i.ibb.co.com"
     ], // Google profile images
   },
 };

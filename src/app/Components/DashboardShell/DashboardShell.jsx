@@ -58,7 +58,7 @@ const DashboardShell = ({ children }) => {
               <div className="hidden md:flex items-center space-x-2">
                 <div className="flex items-center justify-center">
                   <Image
-                    src={user?.image}
+                    src={user? user?.image : 'https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg'}
                     alt="Admin-photo"
                     width={32}
                     height={32}
