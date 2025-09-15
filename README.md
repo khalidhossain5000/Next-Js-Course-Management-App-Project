@@ -1,6 +1,9 @@
 
 # Dream LMS -- Course Management App-Next Js Full Stack Project
 
+
+## Project description
+
 Simple Vegetable Shop is a Next.js web app that allows authenticated users to add and manage products. It features secure Google login, responsive UI with Tailwind CSS, and MongoDB integration for product storage. Protected routes ensure only logged-in users can access product management pages.
 
 
