@@ -9,6 +9,8 @@ import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
+  const { data: session, status } = useSession();
   const links = (
     <>
       <li>
@@ -17,18 +19,23 @@ const NavBar = () => {
       <li>
         <Link href={"/about-us"}>About Us</Link>
       </li>
-      <li>
-        <Link href={"/Dashboard"}> Dashboard</Link>
-      </li>
+      {session?.user && (
+        <>
+          <li>
+            <Link href={"/Dashboard"}> Dashboard</Link>
+          </li>
+        </>
+      )}
+
       <li>
         <Link href={"/all-courses"}>All Courses</Link>
-      </li><li>
+      </li>
+      <li>
         <Link href={"/contact-us"}>Contact Us</Link>
       </li>
     </>
   );
-  const [open, setOpen] = useState(false);
-  const { data: session, status } = useSession();
+
   // sticky code statd
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {

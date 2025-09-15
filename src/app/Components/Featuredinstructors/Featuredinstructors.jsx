@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import bgImage from "../../../assets/BgImage/banner.png";
 import { instructors } from "./data";
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade, Slide  } from "react-awesome-reveal";
 
 const Featuredinstructors = () => {
   return (
@@ -39,7 +39,7 @@ const Featuredinstructors = () => {
         </div>
         {/* INSTRUCTORS GRID */}
         <div className="py-12 lg:py-22 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <Slide  direction="left" cascade damping={0.2}  duration={2000}>
+          <Slide triggerOnce  direction="left" cascade damping={0.2}  duration={2000}>
           {instructors.map((instructor) => (
             <div
               key={instructor.id}
