@@ -45,7 +45,7 @@ const page = () => {
       const res = await axiosInstance.post("/api/auth/register", userInfo);
 
       const data = res.data;
-      console.log("Register API response:", data);
+      
 
       if (res.status === 201) {
         toast.success("Registration successful!");
@@ -56,7 +56,7 @@ const page = () => {
           password,
         });
 
-        console.log("Auto login result:", result);
+    
 
         if (!result.error) {
           toast.success("Login successful!");
@@ -76,7 +76,7 @@ const page = () => {
       setLoading(false); // Stop loading even on error
     }
   };
-  console.log(profilePic, "THIS IS IMAGE ");
+  
   const handleImageUpload = async (e) => {
     const image = e.target.files[0];
     if (image) {
