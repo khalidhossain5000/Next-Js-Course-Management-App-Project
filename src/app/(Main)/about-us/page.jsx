@@ -7,6 +7,40 @@ import img1 from "../../../assets/InstructorImg/user-08-1.jpg";
 import img2 from "../../../assets/InstructorImg/user-07-1.jpg";
 import img3 from "../../../assets/InstructorImg/user-01-4.jpg";
 import img4 from "../../../assets/InstructorImg/profile2.jpg";
+
+
+// app/(Main)/about-us/page.js
+
+// Metadata for About Us page
+export const metadata = {
+  title: "About Us | Dream LMS",
+  description:
+    "Learn more about Dream LMS, our mission, and how we provide high-quality online courses for students worldwide.",
+  openGraph: {
+    title: "About Us | Dream LMS",
+    description:
+      "Learn more about Dream LMS, our mission, and how we provide high-quality online courses for students worldwide.",
+    type: "website",
+  },
+};
+
+// About Us page component
+export default function AboutUsPage() {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>
+        Welcome to Dream LMS! We are committed to providing the best online
+        learning experience with a variety of courses and expert instructors.
+      </p>
+      {/* এখানে তুমি চাইলে HeroSection, InfoSection বা অন্য component add করতে পারো */}
+    </div>
+  );
+}
+
+
+
+
 const Aboutus = () => {
   return (
     <section className=" my-22">
