@@ -8,7 +8,7 @@ import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
 const AllCourses = () => {
   const [searchQuery, setSearchQuery] = useState("");
-const [categoryFilter, setCategoryFilter] = useState(null);
+  const [categoryFilter, setCategoryFilter] = useState(null);
 
   const {
     data: courses,
@@ -27,9 +27,9 @@ const [categoryFilter, setCategoryFilter] = useState(null);
     { value: "graphic-design", label: "Graphic Design" },
     { value: "marketing", label: "Marketing" },
   ];
-  const filteredCourses = courses.filter(course =>
-  course.courseName.toLowerCase().includes(searchQuery.toLowerCase())
-);
+  const filteredCourses = courses.filter((course) =>
+    course.courseName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <section className=" my-22">
@@ -68,8 +68,8 @@ const [categoryFilter, setCategoryFilter] = useState(null);
               </label>
               <Select
                 options={categories}
-                // value={categoryFilter}
-                // onChange={setCategoryFilter}
+                value={categoryFilter}
+                onChange={setCategoryFilter}
                 placeholder="Select a category"
                 className="text-[#191919]"
                 styles={{
