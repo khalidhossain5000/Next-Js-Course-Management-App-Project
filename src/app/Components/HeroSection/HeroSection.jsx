@@ -37,7 +37,7 @@ const HeroSection = () => {
             </h1>
             <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold ">
               <Fade cascade damping={1e-1} triggerOnce>
-                Courses For All
+                Courses For
               </Fade>
             </h1>
             <p className="text-[#685F78] font-semibold lg:max-w-lg text-base md:text-lg">
