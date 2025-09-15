@@ -8,6 +8,7 @@ import { FiSearch } from "react-icons/fi";
 import Select from "react-select";
 const AllCourses = () => {
   const [searchQuery, setSearchQuery] = useState("");
+const [categoryFilter, setCategoryFilter] = useState(null);
 
   const {
     data: courses,
