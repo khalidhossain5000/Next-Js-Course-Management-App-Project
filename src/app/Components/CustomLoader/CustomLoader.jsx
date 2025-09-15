@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import { HashLoader } from "react-spinners";
 
 const CustomLoader = () => {
-    return (
-        <div className="min-h-screen flex bg-white inset-0 justify-center items-center">
-            <PropagateLoader />
-        </div>
-    );
+  return (
+    <div className="min-h-screen flex bg-white inset-0 justify-center items-center">
+      <HashLoader color="#ff4667" size={100} />
+    </div>
+  );
 };
 
 export default CustomLoader;
