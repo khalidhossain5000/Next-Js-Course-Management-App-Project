@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImSpinner9 } from "react-icons/im";
 import authBg from "../../../assets/AuthImg/login-bg.png";
 import authImg from "../../../assets/AuthImg/login-img.png";
@@ -17,13 +17,12 @@ const page = () => {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const axiosInstance = useAxios();
-
+useEffect(() => {
+    document.title = "Register| Dream LMS";
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!profilePic) {
-      toast.error("Please wait, image is uploading!");
-      return;
-    }
+   
     const form = e.target;
 
     // Get form values
@@ -60,7 +59,7 @@ const page = () => {
 
         if (!result.error) {
           toast.success("Login successful!");
-          window.location.href = "/"; //  Redirect to home
+          window.location.href = "/"; 
         } else {
           toast.error(result.error); // Login error
         }

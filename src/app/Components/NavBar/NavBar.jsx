@@ -53,6 +53,18 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // sticky code ends
+
+
+
+    if (status === "loading") {
+    // Loading state
+    return (
+      <div className="flex items-center justify-center">
+        <p className="text-gray-900">User Data Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <header
       className={`py-6  fixed top-0 left-0 w-full transition-all duration-300 z-50 ${
@@ -70,10 +82,11 @@ const NavBar = () => {
         </div>
 
         <div>
+          
           {status === "authenticated" ? (
             <div className="flex items-center space-x-4">
               <Image
-                src={session.user.image}
+                src={session?.user? session.user.image : "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"}
                 alt={session.user.name}
                 width={40}
                 height={40}
@@ -82,7 +95,7 @@ const NavBar = () => {
               <p>{session.user.name}</p>
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
-                className="px-3 py-1 bg-red-500 text-white rounded"
+                className="px-3 py-1 bg-red-500 text-white rounded cursor-pointer"
               >
                 Logout
               </button>
@@ -103,6 +116,13 @@ const NavBar = () => {
               </Link>
             </div>
           )}
+
+
+
+
+
+
+
         </div>
       </nav>
       {/* MOBILE MENU */}
