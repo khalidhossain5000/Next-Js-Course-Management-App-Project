@@ -33,7 +33,7 @@ const page = () => {
     } else {
         setLoading(false)
         toast.success("Logi n sucess")
-      window.location.href = "/" // সফল হলে home এ redirect
+      window.location.href = "/" 
     }
   };
 console.log(error);

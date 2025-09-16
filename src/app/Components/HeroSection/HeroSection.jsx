@@ -26,21 +26,21 @@ const HeroSection = () => {
         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center lg:justify-between h-full container mx-auto px-3">
           {/* Left Text Content */}
           <div className="flex-1 text-center lg:text-left space-y-3 lg:space-y-5 ">
-            <h5 className="text-[#685F78] font-bold text-lg lg:text-xl capitalize">
+            <h5 className="text-[#685F78] font-medium lg:font-bold text-lg lg:text-xl capitalize">
               The Leader in Online Learning
             </h5>
 
-            <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold  ">
+            <h1 className="text-custom-text text-2xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold  ">
               <Fade cascade damping={1e-1} triggerOnce>
                 Engaging & Accessible Online
               </Fade>
             </h1>
-            <h1 className="text-custom-text text-xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold ">
+            <h1 className="text-custom-text text-2xl md:text-2xl lg:text-3xl xl:text-5xl font-extrabold ">
               <Fade cascade damping={1e-1} triggerOnce>
                 Courses For All
               </Fade>
             </h1>
-            <p className="text-[#685F78] font-semibold lg:max-w-lg text-base md:text-lg">
+            <p className="text-[#685F78] md:font-semibold lg:max-w-lg text-base md:text-lg">
               Courses For All Trusted by over 15K Users <br />
               worldwide since 2022
             </p>
