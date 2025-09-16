@@ -4,6 +4,9 @@ import HomePage from "./Home/HomePage";
   title: "Home | Dream LMS",
   description:
     "Welcome to Dream LMS Home. Browse and learn courses online with our full-stack Next.js course management app.",
+      icons: {
+    icon: "/favicon.svg", // <-- এখানে svg path
+  },
   openGraph: {
     title: "Home | Dream LMS",
     description:
