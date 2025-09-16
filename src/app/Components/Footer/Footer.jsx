@@ -8,15 +8,14 @@ import app from '../../../assets/logo/appstore-1.svg'
 import google from '../../../assets/logo/googleplay.svg'
 import logo from '../../../assets/logo/logo-white-1.svg'
 const usefulLinks = [
-  { title: "Profile", href: "#" },
-  { title: "Login", href: "#" },
-  { title: "Register", href: "#" },
-  { title: "Instructor", href: "#" },
-  { title: "Dashboard", href: "#" },
+  { title: "Home", href: "/" },
+  { title: "All-Courses", href: "/all-courses" },
+  { title: "About Us", href: "/about-us" },
+  { title: "Contact Us", href: "/contact-us" },
 ];
 
 const coursesLinks = [
-  { title: "All Courses", href: "#" },
+  { title: "All Courses", href: "/all-courses" },
   { title: "Top Rated", href: "#" },
   { title: "Categories", href: "#" },
   { title: "Pricing", href: "#" },
@@ -104,16 +103,12 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-gray-600">
-        <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-100 text-sm md:text-xl">
+        <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-center gap-4">
+          <p className="text-gray-100 text-sm md:text-xl tect-center">
             © {new Date().getFullYear()} Dreams LMS. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
-            <Link href="#" className="text-gray-300 hover:text-[var(--color-custom-accent-secondary)] text-sm">Privacy Policy</Link>
-            <Link href="#" className="text-gray-300 hover:text-[var(--color-custom-accent-secondary)] text-sm">Terms & Condition</Link>
-            <Link href="#" className="text-gray-300 hover:text-[var(--color-custom-accent-secondary)] text-sm">Contact</Link>
-          </div>
+        
         </div>
       </div>
     </footer>
