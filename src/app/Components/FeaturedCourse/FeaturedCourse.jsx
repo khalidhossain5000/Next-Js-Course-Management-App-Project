@@ -158,19 +158,14 @@ const FeaturedCourse = () => {
                     </div>
                     {/* Buy Now Button */}
                     <div className="text-center py-3 xl:py-0">
-                      <button className=" bg-[#413655] text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300 cursor-pointer">
+                      <Link href={`/checkout/${course._id}`}>
+                      <button className=" bg-custom-accent-secondary text-white py-2 px-6 rounded-full text-sm font-semibold shadow-md hover:bg-[#322c46] transition-colors duration-300 cursor-pointer">
                       Buy Now
                     </button>
+                      </Link>
                     </div>
                   </div>
-                  {/* view more btn */}
-                  <div className=" text-center pt-3 lg:pt-9">
-                    <Link href={`/courses/${course._id}`}>
-                      <button className="bg-custom-accent-secondary text-white py-[7px] px-4 rounded-[55px] text-sm font-semibold gap-2 cursor-pointer w-9/12 mx-auto">
-                        View More
-                      </button>
-                    </Link>
-                  </div>
+                  
                 </div>
               ))}
               </Slide>

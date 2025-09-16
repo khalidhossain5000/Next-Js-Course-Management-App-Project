@@ -32,11 +32,13 @@ const Footer = () => {
           <div className="space-y-4 xl:col-span-2">
             {/* Replace /footer-logo.png with your logo in /public */}
             <div className="w-40">
+              <Link href={'/'}>
               <Image src={logo} 
               alt="Footer Logo" 
               width={200} 
               height={60} 
               className="object-contain" />
+              </Link>
             </div>
             <p className="text-gray-300 text-lg">
               Platform designed to help organizations, educators, and learners manage, deliver, and track learning and training activities.

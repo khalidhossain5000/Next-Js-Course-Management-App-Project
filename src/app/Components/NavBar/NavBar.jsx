@@ -73,7 +73,7 @@ const NavBar = () => {
     >
       <nav className="container mx-auto hidden lg:flex items-center justify-between gap-6">
         <div className="logo">
-          <Image src={logo} alt="Logo" width={200} />
+         <Link href={'/'}> <Image src={logo} alt="Logo" width={200} /> </Link>
         </div>
         <div className="nav-meus">
           <ul className="flex items-center gap-6">{links}</ul>
@@ -122,7 +122,7 @@ const NavBar = () => {
       {/* MOBILE MENU */}
       <nav className="lg:hidden flex items-center justify-between ">
         <div className="logo">
-          <Image src={logo} alt="Logo" width={100} />
+          <Link href={'/'}> <Image src={logo} alt="Logo" width={100} /></Link>
         </div>
         <div>
           {/* Burger Icon */}

@@ -63,7 +63,7 @@ const SideBar = ({ onClose }) => {
         <div className="flex items-center space-x-3">
           <div className="flex gap-3 items-center">
             <div className="logo">
-              <Image src={logo} alt="Logo" width={200} />
+              <Link href={'/'}> <Image src={logo} alt="Logo" width={200} /></Link>
             </div>
           </div>
         </div>
@@ -111,6 +111,7 @@ const SideBar = ({ onClose }) => {
       <div className="p-3 border-t border-gray-200">
         <div className="md:hidden">
           <div className="flex items-center space-x-4">
+             <Link href={'/'}>
             <Image
               src={
                 session?.user
@@ -122,6 +123,7 @@ const SideBar = ({ onClose }) => {
               height={40}
               className="rounded-full"
             />
+            </Link>
             <p>{session?.user?.name}</p>
           </div>
         </div>
