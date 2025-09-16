@@ -46,3 +46,8 @@ export async function GET(req) {
     });
   }
 }
+
+
+
+
+//GETTING COURSES CATEGORY WISE NUMBER USING AGGREGRATE

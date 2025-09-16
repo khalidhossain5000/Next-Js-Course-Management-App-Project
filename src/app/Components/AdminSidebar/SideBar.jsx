@@ -19,7 +19,7 @@ import {
 import { IoAddOutline } from "react-icons/io5";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession,signOut } from "next-auth/react";
 
 const SideBar = ({ onClose }) => {
   const router = useRouter();
@@ -117,7 +117,7 @@ const SideBar = ({ onClose }) => {
                   ? session.user.image
                   : "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"
               }
-              alt={session?.user.name}
+              alt={session?.user.name || 'user name'}
               width={40}
               height={40}
               className="rounded-full"

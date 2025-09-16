@@ -1,9 +1,13 @@
 import React from 'react';
+import CoursesChart from '../DashboardComponent/CoursesChart/CoursesChart';
+import PriceChart from '../DashboardComponent/PriceChart';
 
 const DashboardHome = () => {
     return (
         <div>
-            <h3>Hello</h3>
+           
+            <CoursesChart/>
+            <PriceChart/>
         </div>
     );
 };
