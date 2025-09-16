@@ -19,11 +19,12 @@ import {
 import { IoAddOutline } from "react-icons/io5";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const SideBar = ({ onClose }) => {
   const router = useRouter();
   const pathname = usePathname();
-
+  const { data: session, status } = useSession();
   const menuItems = [
     {
       text: "Dashboard",
@@ -46,7 +47,6 @@ const SideBar = ({ onClose }) => {
       icon: <FiSettings className="w-5 h-5" />,
       path: "/Dashboard/MyPaymentHistory",
     },
-   
   ];
 
   const handleNavigation = (path) => {
@@ -55,8 +55,6 @@ const SideBar = ({ onClose }) => {
       onClose();
     }
   };
-
-   
 
   return (
     <div className="flex flex-col h-full bg-white">
@@ -109,15 +107,35 @@ const SideBar = ({ onClose }) => {
         })}
       </nav>
 
-      {/* Logout Section */}
+      {/* USER Section */}
       <div className="p-3 border-t border-gray-200">
-        <button
-          onClick={() => signOut({ callbackUrl: "/" })}
-          className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 cursor-pointer"
-        >
-          <FiLogOut className="w-5 h-5 text-gray-500" />
-          <span className="font-medium">Logout</span>
-        </button>
+        <div className="md:hidden">
+          <div className="flex items-center space-x-4">
+            <Image
+              src={
+                session?.user
+                  ? session.user.image
+                  : "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"
+              }
+              alt={session?.user.name}
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+            <p>{session?.user?.name}</p>
+          </div>
+        </div>
+
+        {/* log out btn */}
+        <div>
+          <button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 cursor-pointer"
+          >
+            <FiLogOut className="w-5 h-5 text-gray-500" />
+            <span className="font-medium">Logout</span>
+          </button>
+        </div>
       </div>
     </div>
   );

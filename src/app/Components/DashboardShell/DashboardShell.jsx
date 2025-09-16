@@ -36,6 +36,7 @@ const DashboardShell = ({ children }) => {
         `}
       >
         <SideBar onClose={handleDrawerToggle} />
+        
       </div>
       {/* Main Content */}
       <div className="flex-1 flex flex-col lg:ml-0">
