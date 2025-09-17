@@ -52,7 +52,7 @@ const DashboardShell = ({ children }) => {
                 <FiMenu className="w-6 h-6 text-light-text" />
               </button>
               <h1 className="text-xl font-bold text-light-text font-secondary">
-                Admin Dashboard
+                User Dashboard
               </h1>
             </div>
             <div className="flex items-center space-x-4">

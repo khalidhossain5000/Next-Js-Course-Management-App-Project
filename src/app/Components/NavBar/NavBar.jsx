@@ -85,7 +85,7 @@ const NavBar = () => {
               <Image
                 src={
                   session?.user
-                    ? session.user.image
+                    ? session?.user?.image
                     : "https://i.ibb.co.com/zVB99J4d/DEFAULT.jpg"
                 }
                 alt={session.user.name}
